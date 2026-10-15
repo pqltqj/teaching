@@ -1,6 +1,22 @@
 {
   "courses": [
-    {"id": "biology30", "name": "Biology 30", "resources": []},
-    {"id": "biology20", "name": "Biology 20", "resources": []}
+    {
+      "id": "biology30",
+      "name": "Biology 30",
+      "resources": [
+        {
+          "date": "2026-10-16",
+          "title": "Human Reproductive Technology",
+          "type": "Unit B · Case study",
+          "summary": "Read the textbook case study, explore scientific figures, and download your answers. Independent work.",
+          "href": "/resources/reproductive-technology/"
+        }
+      ]
+    },
+    {
+      "id": "biology20",
+      "name": "Biology 20",
+      "resources": []
+    }
   ]
 }
