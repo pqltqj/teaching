@@ -8,14 +8,14 @@ async function matches(a, b) {
   for (let i = 0; i < x.length; i++) different |= x[i] ^ y[i];
   return different === 0;
 }
-function sessionToken(request) {
-  return (request.headers.get('Cookie') || '').split(';').map(v => v.trim()).find(v => v.startsWith(cookieName + '='))?.slice(cookieName.length + 1) || '';
+function sessionToken(request, name = cookieName) {
+  return (request.headers.get('Cookie') || '').split(';').map(v => v.trim()).find(v => v.startsWith(name + '='))?.slice(name.length + 1) || '';
 }
-async function teacher(request, env, storage) {
-  const token = sessionToken(request);
+async function teacher(request, env, storage, scope = 'teacher') {
+  const token = sessionToken(request, scope === 'preview' ? '__Host-review-preview' : cookieName);
   if (!/^[a-f0-9]{64}$/.test(token)) return false;
   const session = await storage.get('session:' + token);
-  if (!session || session.expires <= Date.now()) { if (session) await storage.delete('session:' + token); return false; }
+  if (!session || (session.scope || 'teacher') !== scope || session.expires <= Date.now()) { if (session) await storage.delete('session:' + token); return false; }
   // Rotating the configured password immediately invalidates existing sessions.
   return matches(session.passwordFingerprint, String(await digest(env.TEACHER_PASSWORD || '')));
 }
@@ -40,7 +40,10 @@ export async function handleApi(request, env, storage) {
     if (!(request.headers.get('Content-Type') || '').startsWith('application/json')) return json({error: 'JSON required.'}, 415);
   }
   if (!env.TEACHER_PASSWORD || env.TEACHER_PASSWORD.length < 16) return json({error: 'Teacher password must be configured before opening this site.'}, 503);
-  if (path === '/api/login' && method === 'POST') {
+  if (['/api/login', '/api/preview/login'].includes(path) && method === 'POST') {
+    const preview = path === '/api/preview/login';
+    const duration = preview ? 30 * 60 * 1000 : sessionMs;
+    const name = preview ? '__Host-review-preview' : cookieName;
     const rate = await storage.get('login-rate') || {count: 0, until: 0};
     if (rate.until > Date.now() && rate.count >= 20) return json({error: 'Too many attempts. Try again in ten minutes.'}, 429);
     const body = await readJson(request, 2000);
@@ -52,15 +55,21 @@ export async function handleApi(request, env, storage) {
     const sessions = await storage.list({prefix: 'session:'});
     for (const [key, value] of sessions) if (value.expires <= Date.now()) await storage.delete(key);
     const token = Array.from(crypto.getRandomValues(new Uint8Array(32)), b => b.toString(16).padStart(2, '0')).join('');
-    await storage.put('session:' + token, {expires: Date.now() + sessionMs, passwordFingerprint: String(await digest(env.TEACHER_PASSWORD))});
-    return json({teacher: true}, 200, {'Set-Cookie': `${cookieName}=${token}; Path=/; Secure; HttpOnly; SameSite=Strict; Max-Age=${sessionMs / 1000}`});
+    await storage.put('session:' + token, {scope: preview ? 'preview' : 'teacher', expires: Date.now() + duration, passwordFingerprint: String(await digest(env.TEACHER_PASSWORD))});
+    return json(preview ? {preview: true} : {teacher: true}, 200, {'Set-Cookie': `${name}=${token}; Path=/; Secure; HttpOnly; SameSite=Strict; Max-Age=${duration / 1000}`});
+  }
+  if (path === '/api/preview/logout' && method === 'POST') {
+    await storage.delete('session:' + sessionToken(request, '__Host-review-preview'));
+    return json({preview: false}, 200, {'Set-Cookie': '__Host-review-preview=; Path=/; Secure; HttpOnly; SameSite=Strict; Max-Age=0'});
   }
   if (path === '/api/logout' && method === 'POST') {
     await storage.delete('session:' + sessionToken(request));
     return json({teacher: false}, 200, {'Set-Cookie': `${cookieName}=; Path=/; Secure; HttpOnly; SameSite=Strict; Max-Age=0`});
   }
   const isTeacher = await teacher(request, env, storage);
-  if (path === '/api/bank' && method === 'GET') {
+  const previewBank = path === '/api/preview/bank';
+  if ((path === '/api/bank' || previewBank) && method === 'GET') {
+    if (previewBank && !await teacher(request, env, storage, 'preview')) return json({error: 'Enter your teacher passphrase to preview on this device.'}, 401);
     const bank = await storage.get('bank');
     if (!bank) return json({teacher: isTeacher, courses: [], needsImport: true});
     const courses = [];
@@ -68,7 +77,7 @@ export async function handleApi(request, env, storage) {
       const sets = [];
       for (const set of course.sets) {
         const locked = (await storage.get('lock:' + course.id + ':' + set.date)) !== false;
-        sets.push({date: set.date, title: set.title, locked, count: set.questions.length, questions: locked ? [] : set.questions});
+        sets.push({date: set.date, title: set.title, locked, count: set.questions.length, questions: locked && !previewBank ? [] : set.questions});
       }
       courses.push({id: course.id, name: course.name, sets});
     }
