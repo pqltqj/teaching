@@ -56,3 +56,10 @@ The included preview PNGs show the teacher's locked-set screen and shuffle-set m
 In Smartboard view, choose a locked date and click **Preview on this device**. Enter the existing teacher passphrase. A separate HttpOnly session permits read-only access for 30 minutes; it cannot import a bank or change a lock. Other browsers keep receiving redacted locked sets. Click **End device preview**, or leave Smartboard, to end the preview. Refreshing the page also hides the preview until the passphrase is entered again. Preview cookies are separate from teacher sessions. To release a set to students, leave Smartboard and sign in through Teacher as usual.
 
 The header sun/moon button switches light and dark mode, including Smartboard. It follows the device preference initially and saves a manual choice on that browser.
+
+
+## Resources & Investigations
+
+The home-page library card opens `/resources/`, with a separate Biology 30 / Biology 20 course picker. Each course lists dated resources, newest first, grouped by month. Search filters by topic, type, date, or description. Courses with no resources show an honest empty state. Review questions, locks, filters, and Smartboard are unchanged.
+
+To add a resource, create its page or file under `public/resources/`, then add an entry to the relevant course in `public/resources/catalog.json`: `{"date":"2026-10-16","title":"Resource title","type":"Investigation","summary":"A short description.","href":"/resources/resource-slug/"}`. Dates use YYYY-MM-DD. Links may point to an on-site page, PDF, or an HTTPS resource. Deploy the public assets after editing. The catalog starts empty; no case study has been published yet. Resources are public, independent of question-set locks; keep any private answer keys outside `public/`.
