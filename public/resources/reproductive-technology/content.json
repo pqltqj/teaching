@@ -1,0 +1,120 @@
+{
+  "intro": "Reproductive technology gives individuals, who would not otherwise be able to have a baby, a chance at parenthood. Few technologies have raised interest and concern the way that reproductive technology has. Reproductive technology is changing not only the way in which babies are born, but also the laws that decide parenthood and responsibility.",
+  "questions": [
+    "Identify one disadvantage of using fertility drugs.",
+    "Why might in vitro fertilization be used?",
+    "If a woman has a cervix that fails to hold the developing fetus in the uterus, then a premature birth can be expected. Despite advancing technology that helps premature babies complete development outside the uterus, the prospects for babies born prior to six months is not good. What reproductive technologies could be employed if a woman wants to be the genetic mother?",
+    "Explain how a baby could have five different parents if reproductive technology was used.",
+    "What ethical issues might arise when unused eggs or embryos are donated to parents who cannot produce their own? What should be done with abandoned embryos?"
+  ],
+  "extension": "Where does fertilization occur in IUI versus IVF, and why does that difference matter?",
+  "questionNotes": {
+    "2": "Textbook context: this question retains the original wording. There is no single six-month survival cutoff; outcomes vary with gestational age and care. Focus your answer on the reproductive technologies and the source of the egg.",
+    "3": "The textbook uses “parents” to describe different genetic, gestational, and caregiving roles. Distinguish those roles rather than assuming that they confer the same legal status.",
+    "4": "Explain a position and give a biological or ethical reason. More than one well-supported response is possible."
+  },
+  "topics": [
+    {
+      "id": "fertility-drugs",
+      "title": "Fertility Drugs",
+      "short": "Fertility drugs",
+      "figure": 12,
+      "photo": "medications",
+      "excerpt": "Fertility drugs stimulate the action of pituitary hormones (Figure 12). Follicle development within the ovary is enhanced and the release of one or more egg cells becomes more probable. Because fertility drugs increase follicle development within the ovary causing multiple ovulations, the chances of having fraternal twins increases.",
+      "focus": "Follow the hormonal signal to the ovary. Notice how developing more follicles can affect the number of eggs released.",
+      "note": "Scientific clarification: fertility medications may stimulate hormone release or supply hormones that act directly on the ovaries. Multiple ovulation can increase the chance of a multiple pregnancy.",
+      "source": "https://www.hfea.gov.uk/treatments/explore-all-treatments/in-vitro-fertilisation-ivf/",
+      "questions": [
+        1
+      ]
+    },
+    {
+      "id": "iui",
+      "title": "Intrauterine Insemination",
+      "short": "IUI",
+      "figure": 13,
+      "photo": "oocyte",
+      "excerpt": "Sperm cells, either from the woman’s partner or from a sperm donor, are transferred into the uterus of the woman following ovulation (Figure 13). Most sperm cells normally die before they reach the egg cell and this technique ensures that greater numbers of motile sperm cells reach the egg.",
+      "focus": "Track where the sperm is placed and where fertilization would still need to happen.",
+      "note": "Scientific clarification: IUI places prepared sperm in the uterus around ovulation. Fertilization still occurs inside the body, usually in a Fallopian tube; open, functioning tubes are needed. IUI may be used with or without fertility drugs.",
+      "source": "https://www.hfea.gov.uk/treatments/explore-all-treatments/intrauterine-insemination-iui",
+      "questions": [
+        2
+      ]
+    },
+    {
+      "id": "ivf",
+      "title": "In Vitro Fertilization",
+      "short": "IVF",
+      "figure": 14,
+      "photo": "lab",
+      "excerpt": "The ovaries are hormonally prepared for ovulation. A device called a laparoscope is inserted into the woman’s abdomen (Figure 14). An optical device within the instrument enables the physician to locate the ovary. A suction apparatus within the laparoscope allows the extraction of eggs from the ovary. The eggs are placed in a dish and fertilized by the partner’s sperm (in vitro literally means ‘in glass’). Following a brief incubation period, one or more of the embryos is transferred into the uterus.",
+      "focus": "Separate egg collection, fertilization, and embryo transfer. They happen at different locations.",
+      "note": "Scientific update: eggs are now commonly collected using an ultrasound-guided needle through the vaginal wall, rather than the laparoscopic method described here. Fertilization and early embryo development occur in a laboratory; an embryo is then transferred into the uterus. Transfer does not guarantee implantation.",
+      "source": "https://www.hfea.gov.uk/treatments/explore-all-treatments/in-vitro-fertilisation-ivf/",
+      "questions": [
+        2,
+        3
+      ]
+    },
+    {
+      "id": "cytoplasmic-transfer",
+      "title": "Cytoplasmic Transfer",
+      "short": "Cytoplasmic transfer",
+      "figure": null,
+      "photo": "icsi",
+      "excerpt": "The cytoplasm from an egg from a younger woman is transferred into the egg cell of an older woman. It is believed that the cytoplasm from the younger woman’s egg will reduce the probability of genetic defects following fertilization.",
+      "focus": "Distinguish transferring cytoplasm from donating an entire egg. The recipient egg retains its nuclear DNA.",
+      "note": "Scientific context: this is a historical technique described by the textbook. Its proposed benefit is not an established guarantee that genetic defects are prevented. Cytoplasm contains mitochondria with their own DNA. Do not confuse this technique with ICSI (sperm injection) or with modern mitochondrial donation methods.",
+      "source": "https://www.hfea.gov.uk/treatments/embryo-testing-and-treatments-for-disease/mitochondrial-donation-treatment/",
+      "questions": [
+        4
+      ]
+    },
+    {
+      "id": "gift",
+      "title": "Gamete Intrafallopian Transfer (GIFT)",
+      "short": "GIFT",
+      "figure": null,
+      "photo": "embryo",
+      "excerpt": "Sperm and eggs are inserted in the Fallopian tube. The technique is believed to increase the chances of successful fertilization by bringing sperm and egg cells together.",
+      "focus": "Gametes are transferred before fertilization. Compare this with IVF, which transfers an embryo after fertilization.",
+      "note": "Scientific clarification: GIFT transfers eggs and sperm into a Fallopian tube, where fertilization may occur. It requires at least one functioning Fallopian tube. The embryo photo below illustrates development after fertilization, not the GIFT transfer procedure.",
+      "source": "https://www.hfea.gov.uk/media/1771/rcn-fertility-preservation-2017.pdf",
+      "questions": [
+        2
+      ]
+    },
+    {
+      "id": "donation-freezing",
+      "title": "Egg Donations and Egg/Embryo Freezing",
+      "short": "Donation & freezing",
+      "figure": 15,
+      "photo": "equipment",
+      "excerpt": "Fertility drugs are employed to initiate multiple ovulations. Although a single egg may be fertilized, excess eggs are frozen (Figure 15). At a later date, these eggs can be thawed. Some of the eggs could be fertilized and the embryos implanted back into the same mother. Alternatively, unfertilized eggs could be given to another woman who either had no eggs in her ovary or was unable to ovulate.",
+      "focus": "An egg is a gamete; an embryo has already undergone fertilization. Identify whose egg and sperm supply the nuclear DNA.",
+      "note": "Scientific clarification: unfertilized eggs and fertilized embryos can both be cryopreserved, but they are different stages. An embryo is transferred to a uterus; implantation may then occur. Donation requires informed consent. The photograph shows laboratory equipment, not a cryostorage tank.",
+      "source": "https://www.hfea.gov.uk/treatments/explore-all-treatments/using-donated-eggs-sperm-or-embryos-in-treatment/",
+      "questions": [
+        4,
+        5
+      ]
+    },
+    {
+      "id": "embryo-transfer",
+      "title": "Embryo Transfer",
+      "short": "Embryo transfer",
+      "figure": 16,
+      "photo": "embryo",
+      "excerpt": "Combining the technologies of in vitro fertilization and artificial insemination permits another procedure (Figure 16). A woman with a defective cervix or uterus may ask another woman (surrogate) to give birth to her genetic child. In this case, the egg from the woman is combined with the sperm of her partner. Fertilization occurs in vitro. The egg is transferred to the surrogate who carries the baby to term and then returns it to the genetic parents. The two technologies raise a fundamental question. Is the mother the one who gives birth or the one who contributes the genetic information?",
+      "focus": "Trace the egg, sperm, embryo, and uterus separately. Genetic contribution and carrying a pregnancy are different roles.",
+      "note": "Scientific clarification: in this example an embryo, not an unfertilized egg, is transferred to the gestational carrier’s uterus. The carrier does not provide the egg in gestational surrogacy. Arrangements involve consent and context-dependent legal responsibilities.",
+      "source": "https://www.hfea.gov.uk/treatments/explore-all-treatments/surrogacy/",
+      "questions": [
+        3,
+        4,
+        5
+      ]
+    }
+  ]
+}
