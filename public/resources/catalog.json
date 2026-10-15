@@ -1,0 +1,6 @@
+{
+  "courses": [
+    {"id": "biology30", "name": "Biology 30", "resources": []},
+    {"id": "biology20", "name": "Biology 20", "resources": []}
+  ]
+}
