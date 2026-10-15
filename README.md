@@ -1,6 +1,6 @@
 # Biology Review Bank — teacher locks and shuffle filters
 
-Prepared for pqltqj/teaching. This is a tested implementation, not a published deployment.
+Live at https://josey.fun. The three current review sets are stored privately in Cloudflare and start locked. Production domain routing, bank persistence across deployments, and locked-content redaction have been verified. The teacher enters the private passphrase directly on the live website.
 
 ## What changed
 
