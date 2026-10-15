@@ -49,3 +49,10 @@ For local development, put `TEACHER_PASSWORD="a private local passphrase"` in `.
 Browser verification against the actual local Worker covered teacher sign-in, import, all-locked startup, unlock, searchable shuffle checkboxes, Select all/Clear, two separate teacher/student sessions, automatic removal of relocked questions from a student's random deck, Smartboard locking, and mobile layouts. No browser script errors were reported.
 
 The included preview PNGs show the teacher's locked-set screen and shuffle-set menu. Production login, deployment, custom domain routing, and production persistence still require verification after account access is connected.
+
+
+## Smartboard device preview and appearance
+
+In Smartboard view, choose a locked date and click **Preview on this device**. Enter the existing teacher passphrase. A separate HttpOnly session permits read-only access for 30 minutes; it cannot import a bank or change a lock. Other browsers keep receiving redacted locked sets. Click **End device preview**, or leave Smartboard, to end the preview. Refreshing the page also hides the preview until the passphrase is entered again. Preview cookies are separate from teacher sessions. To release a set to students, leave Smartboard and sign in through Teacher as usual.
+
+The header sun/moon button switches light and dark mode, including Smartboard. It follows the device preference initially and saves a manual choice on that browser.
