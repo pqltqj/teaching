@@ -55,7 +55,7 @@ The included preview PNGs show the teacher's locked-set screen and shuffle-set m
 
 In Smartboard view, choose a locked date and click **Preview on this device**. Enter the existing teacher passphrase. A separate HttpOnly session permits read-only access for 30 minutes; it cannot import a bank or change a lock. Other browsers keep receiving redacted locked sets. Click **End device preview**, or leave Smartboard, to end the preview. Refreshing the page also hides the preview until the passphrase is entered again. Preview cookies are separate from teacher sessions. To release a set to students, leave Smartboard and sign in through Teacher as usual.
 
-The header sun/moon button switches light and dark mode, including Smartboard. It follows the device preference initially and saves a manual choice on that browser.
+The header sun/moon button switches light and dark mode, including Smartboard. It defaults to light mode and saves a manual choice on that browser.
 
 
 ## Resources & Investigations
