@@ -58,7 +58,7 @@ In Smartboard view, choose a locked date and click **Preview on this device**. E
 The header sun/moon button switches light and dark mode, including Smartboard. It defaults to light mode and saves a manual choice on that browser.
 
 
-## Resources & Investigations
+## Resources
 
 The home-page library card opens `/resources/`, with a separate Biology 30 / Biology 20 course picker. Each course lists dated resources, newest first, grouped by month. Search filters by topic, type, date, or description. Courses with no resources show an honest empty state. Review questions, locks, filters, and Smartboard are unchanged.
 
