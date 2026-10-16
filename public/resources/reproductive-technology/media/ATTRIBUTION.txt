@@ -34,28 +34,4 @@ https://commons.wikimedia.org/wiki/File:Wings_Ivf_Lab_equipment_H.jpg
 https://creativecommons.org/licenses/by-sa/3.0/
 Web adaptation; source licence retained.
 
-Photographic / anatomical figure adaptations (Figures 12–16 and additional visuals): CC BY-SA 4.0
-https://creativecommons.org/licenses/by-sa/4.0/
-Existing source photographs and illustrations are arranged with new textbook labels and arrows; original labels removed.
-
-Sperm micrograph: OpenStax, Biology 2e, Figure 43.9a. CC BY 4.0.
-https://openstax.org/books/biology-2e/pages/43-3-human-reproductive-anatomy-and-gametogenesis
-https://creativecommons.org/licenses/by/4.0/
-
-Brain: Patrick J. Lynch, medical illustrator; Hypophyse.png, via Wikimedia Commons. CC BY-SA 3.0.
-https://commons.wikimedia.org/wiki/File:Hypophyse.png
-https://creativecommons.org/licenses/by-sa/3.0/
-
-Reproductive anatomy: Blausen.com staff (2014), Medical gallery of Blausen Medical 2014, WikiJournal of Medicine 1(2), doi:10.15347/wjm/2014.010. CC BY 3.0.
-https://commons.wikimedia.org/wiki/File:Blausen_0399_FemaleReproSystem_01.png
-https://creativecommons.org/licenses/by/3.0/
-
-Cryopreservation equipment: Lambert3, Freezers for cryopreservation at IMSC.JPG. CC BY-SA 3.0.
-https://commons.wikimedia.org/wiki/File:Freezers_for_cryopreservation_at_IMSC.JPG
-https://creativecommons.org/licenses/by-sa/3.0/
-Equipment photographed at the International Moss Stock Center. Used to illustrate liquid-nitrogen cryopreservation equipment.
-
-Servier Medical Art, Les Laboratoires Servier — ovary cross-section and uterus, CC BY 4.0. Textbook labels and arrows added.
-https://smart.servier.com/smart_image/ovary/
-https://smart.servier.com/smart_image/uterus/
-https://creativecommons.org/licenses/by/4.0/
+Textbook Figures 12–16: Nelson Biology Alberta 20–30, pages 542–543, from the supplied _7_-_unit_30b.pdf. Original figures and labels.
