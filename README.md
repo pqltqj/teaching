@@ -1,6 +1,6 @@
 # Biology Review Bank — teacher locks and shuffle filters
 
-Live at https://josey.fun. The three current review sets are stored privately in Cloudflare and start locked. Production domain routing, bank persistence across deployments, and locked-content redaction have been verified. The teacher enters the private passphrase directly on the live website.
+Live at https://ejosey.ca. The previous josey.fun address now forwards to ejosey.ca; the complete website and API are served on ejosey.ca. The three current review sets are stored privately in Cloudflare and start locked. Production bank persistence across deployments, and locked-content redaction have been verified. The teacher enters the private passphrase directly on the live website.
 
 ## What changed
 
@@ -78,3 +78,8 @@ Students still download a PDF and upload/email it using the teacher's usual rout
 PDF export uses the locally vendored jsPDF 4.2.1 (MIT; licence included). The private teacher answer guide is delivered separately and is never placed under `public/` or committed to this public repository. The review bank, lock API, teacher sessions, Smartboard preview, and review layouts are unchanged.
 
 Validation: checked all seven excerpts and five questions against extracted textbook text, all diagram enlargements, mobile layout, saved drafts after reload, backup/restore/clear, storage error messaging, PDF bytes/filename, long response pagination, and print fallback. PDF output was rendered and inspected. The headless test browser cancels native downloads in this environment, including a plain text test; the activity test captures and verifies the actual generated export bytes and download trigger instead.
+
+
+## Primary domain
+
+ejosey.ca is the primary Cloudflare Worker custom domain; www.ejosey.ca forwards to the root address. josey.fun is retained only as a permanent redirect for old links. Keep these domain entries in wrangler.jsonc on deployment. The existing REVIEW binding, Worker name, and migrations are unchanged, so review locks and recovery-code drafts retain their data. Browser-only drafts and teacher sign-in cookies belong to their original host; students can recover saved online drafts on the new host using their codes. GitHub Pages is a redirect entry point and does not host the application backend.
