@@ -7,7 +7,7 @@
     {"pattern": "ejosey.ca", "custom_domain": true},
     {"pattern": "www.ejosey.ca", "custom_domain": true}
   ],
-  "assets": {"directory": "./public", "binding": "ASSETS", "run_worker_first": ["/api/*"]},
+  "assets": {"directory": "./public", "binding": "ASSETS", "run_worker_first": true},
   "durable_objects": {"bindings": [{"name": "REVIEW", "class_name": "ReviewBank"}]},
   "migrations": [{"tag": "v1", "new_sqlite_classes": ["ReviewBank"]}]
 }
