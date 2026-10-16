@@ -29,3 +29,5 @@ dialog{border:1px solid var(--line);border-radius:14px;padding:20px;background:v
 /* Keep each technology’s figure and photograph together. */
 .topic-media{container-type:inline-size;margin:22px 0}.topic-media .concept-figure{margin:0 auto;width:100%}.topic-media .photo{max-width:440px;margin:0 auto;width:100%}.topic-media .photo img{max-height:300px;object-fit:contain}.paired-media{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:18px;align-items:start}.paired-media .photo{min-width:0}.paired-media .figure-caption{line-height:1.5}
 @media(max-width:750px){.paired-media{grid-template-columns:1fr;gap:22px}.topic-media .concept-figure{max-width:400px}.topic-media .photo img{max-height:260px}}
+
+.optional-answer-button,.finish-download{margin-top:18px}.next-topic{text-align:left;display:flex;flex-direction:column;gap:3px}.next-label{font-weight:700}.next-note{font-size:11px;font-weight:400;opacity:.9}
