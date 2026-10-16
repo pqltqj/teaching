@@ -102,7 +102,7 @@ export async function handleApi(request, env, storage) {
   }
   return json({error: 'Not found.'}, 404);
 }
-async function readJson(request, max) {
+export async function readJson(request, max) {
   if (Number(request.headers.get('Content-Length') || 0) > max) return null;
   const reader = request.body?.getReader();
   if (!reader) return null;
