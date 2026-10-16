@@ -1,6 +1,6 @@
 # Biology Review Bank — teacher locks and shuffle filters
 
-Live at https://ejosey.ca. The previous josey.fun address now forwards to ejosey.ca; the complete website and API are served on ejosey.ca. The three current review sets are stored privately in Cloudflare and start locked. Production bank persistence across deployments, and locked-content redaction have been verified. The teacher enters the private passphrase directly on the live website.
+Live at https://ejosey.ca. The complete website and API are served on ejosey.ca. The three current review sets are stored privately in Cloudflare and start locked. Production bank persistence across deployments, and locked-content redaction have been verified. The teacher enters the private passphrase directly on the live website.
 
 ## What changed
 
@@ -82,4 +82,4 @@ Validation: checked all seven excerpts and five questions against extracted text
 
 ## Primary domain
 
-ejosey.ca is the primary Cloudflare Worker custom domain; www.ejosey.ca forwards to the root address. josey.fun is retained only as a permanent redirect for old links. Keep these domain entries in wrangler.jsonc on deployment. The existing REVIEW binding, Worker name, and migrations are unchanged, so review locks and recovery-code drafts retain their data. Browser-only drafts and teacher sign-in cookies belong to their original host; students can recover saved online drafts on the new host using their codes. GitHub Pages is a redirect entry point and does not host the application backend.
+ejosey.ca is the primary Cloudflare Worker custom domain; www.ejosey.ca forwards to the root address. The retired domain is disconnected. Keep these domain entries in wrangler.jsonc on deployment. The existing REVIEW binding, Worker name, and migrations are unchanged, so review locks and recovery-code drafts retain their data. Browser-only drafts and teacher sign-in cookies belong to their original host; students can recover saved online drafts on the new host using their codes. GitHub Pages is a redirect entry point and does not host the application backend.

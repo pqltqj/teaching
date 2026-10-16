@@ -13,7 +13,7 @@ export class ReviewBank {
 export default {
   async fetch(request, env) {
     const publicURL = new URL(request.url);
-    if (['josey.fun', 'www.josey.fun', 'www.ejosey.ca'].includes(publicURL.hostname) || (publicURL.hostname === 'ejosey.ca' && publicURL.protocol === 'http:')) {
+    if (publicURL.hostname === 'www.ejosey.ca' || (publicURL.hostname === 'ejosey.ca' && publicURL.protocol === 'http:')) {
       publicURL.protocol = 'https:';
       publicURL.hostname = 'ejosey.ca';
       publicURL.port = '';

@@ -2,8 +2,8 @@ import {test} from 'node:test';
 import assert from 'node:assert/strict';
 import worker from '../src/worker.js';
 
-test('old website links and www forward to the primary .ca address',async()=>{
- for(const host of ['josey.fun','www.josey.fun','www.ejosey.ca']){
+test('www forwards to the primary .ca address',async()=>{
+ for(const host of ['www.ejosey.ca']){
   const r=await worker.fetch(new Request('https://'+host+'/resources/reproductive-technology/?lesson=1'),{});
   assert.equal(r.status,308);assert.equal(r.headers.get('Location'),'https://ejosey.ca/resources/reproductive-technology/?lesson=1');
  }
