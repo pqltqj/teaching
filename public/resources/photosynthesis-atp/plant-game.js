@@ -21,7 +21,7 @@
     {id:'dead-leaf-butterfly',name:'Dead-leaf butterfly',species:'Kallima inachus',plant:false,photo:false,
       explanation:'Those are wings, not leaves. This butterfly is an animal that gets its energy from food. Its leaf-like appearance is camouflage.'},
     {id:'bulbasaur',name:'Bulbasaur',species:null,bonus:true,
-      explanation:'Yes! Bulbasaur can learn Synthesis, a move that restores HP and is affected by the weather. Its plant-like bulb makes it a fitting sunlight-themed bonus.'}
+      explanation:'Yes! Bulbasaur can learn Synthesis.'}
   ];
   let assets = null;
   let mode = 'plant';
@@ -51,7 +51,7 @@
   function setName(commonId,speciesId,item) {
     byId(commonId).textContent=item.name;
     const species=byId(speciesId);
-    species.textContent=item.species || 'Pokédex #0001 · Fictional bonus';
+    species.textContent=item.species || 'Pokédex #0001';
     species.classList.toggle('fictional',!!item.bonus);
   }
   function expected(item) { return item.bonus ? true : item[mode]; }
@@ -110,7 +110,7 @@
     byId('organism-front-tag').textContent=item.bonus?'Fictional bonus':mode==='plant'?'Plant or not?':'Photosynthesis?';
     yes.disabled=answered;no.disabled=answered;
     byId('organism-front-next').hidden=!answered;
-    byId('organism-hint').textContent=answered?'Answer checked. Continue when ready.':item.bonus?'One last card, just for fun.':'Choose Yes or No to flip the card.';
+    byId('organism-hint').textContent=answered?'Answer checked. Continue when ready.':'Choose Yes or No to flip the card.';
     byId('organism-back-answer').textContent=answerText(item);
     byId('organism-explanation').textContent=item.explanation;
     byId('organism-fact-plant').textContent=item.bonus?'Fictional Pokémon':item.plant?'Plant: Yes':'Plant: No';
@@ -206,3 +206,4 @@
   window.plantGame={enter(){if(!loading)updateMode();}};
   load();
 })();
+
