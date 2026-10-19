@@ -16,7 +16,15 @@
     {
       "id": "biology20",
       "name": "Biology 20",
-      "resources": []
+      "resources": [
+        {
+          "date": "2026-10-19",
+          "title": "Photosynthesis, ATP and Chloroplast Review",
+          "type": "Unit C · Interactive activity",
+          "summary": "Class questions with scoring and answer effects, plus a lettered chloroplast review for the board.",
+          "href": "/resources/photosynthesis-atp/"
+        }
+      ]
     }
   ]
 }
