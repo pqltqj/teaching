@@ -83,3 +83,8 @@ Validation: checked all seven excerpts and five questions against extracted text
 ## Primary domain
 
 ejosey.ca is the primary Cloudflare Worker custom domain; www.ejosey.ca forwards to the root address. The retired domain is disconnected. Keep these domain entries in wrangler.jsonc on deployment. The existing REVIEW binding, Worker name, and migrations are unchanged, so review locks and recovery-code drafts retain their data. Browser-only drafts and teacher sign-in cookies belong to their original host; students can recover saved online drafts on the new host using their codes. GitHub Pages is a redirect entry point and does not host the application backend.
+
+
+## Automatic production deployments
+
+Cloudflare Workers Builds is connected to `pqltqj/teaching` on `main`. Production commits deploy with `npx wrangler deploy`; preview builds are disabled. The Bio 20 photosynthesis, ATP and chloroplast board activity is listed as one resource at `/resources/photosynthesis-atp/`.
