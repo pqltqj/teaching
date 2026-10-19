@@ -14,10 +14,12 @@
 @keyframes x-pop{0%{transform:translate(-50%,-50%) scale(.4);opacity:0}25%{transform:translate(-50%,-50%) scale(1.1);opacity:1}70%{opacity:1}100%{transform:translate(-50%,-50%) scale(1);opacity:0}}
 @media(prefers-reduced-motion:reduce){.confetti{animation:none;display:none}.wrong-x{animation:none;transform:translate(-50%,-50%);opacity:1}}
 .back-link{font-size:19px;color:var(--ink);text-decoration:none;white-space:nowrap;padding:10px 0}.back-link:hover{text-decoration:underline}
+header{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr)}.header-left{display:flex;align-items:center;gap:22px;justify-self:start}header nav{justify-self:center}header>.utility{justify-self:end}
+@media(max-width:850px){header{grid-template-columns:1fr auto}.header-left{gap:16px}header nav{grid-column:1/-1;grid-row:2;justify-self:center}header>.utility{grid-column:2;grid-row:1}.header-left .brand{width:auto}}
 </style>
 </head>
 <body>
-<header><a class="back-link" href="/resources/#biology20" aria-label="Back to Bio 20 resources">← Resources</a><span class="brand">BIO 20</span><nav aria-label="Activities"><button class="nav" id="tab-activity" aria-current="page">Photosynthesis + ATP</button><button class="nav" id="tab-review">Chloroplast review</button></nav><button class="utility" id="fullscreen">Full screen</button></header>
+<header><div class="header-left"><a class="back-link" href="/resources/#biology20" aria-label="Back to Bio 20 resources">← Resources</a><span class="brand">BIO 20</span></div><nav aria-label="Activities"><button class="nav" id="tab-activity" aria-current="page">Photosynthesis + ATP</button><button class="nav" id="tab-review">Chloroplast review</button></nav><button class="utility" id="fullscreen">Full screen</button></header>
 <main>
 <section id="activity-page" class="page" aria-labelledby="question">
  <div class="sectionline"><span></span><button class="utility" id="restart">Start again</button></div>
