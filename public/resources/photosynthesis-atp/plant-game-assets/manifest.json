@@ -1,0 +1,62 @@
+{
+  "ghost-pipe": {
+    "file": "ghost-pipe.webp",
+    "position": "50% 48%",
+    "width": 1280,
+    "height": 853
+  },
+  "venus-flytrap": {
+    "file": "venus-flytrap.webp",
+    "position": "center",
+    "width": 1280,
+    "height": 1400
+  },
+  "living-stones": {
+    "file": "living-stones.webp",
+    "position": "center",
+    "width": 1280,
+    "height": 960
+  },
+  "giant-kelp": {
+    "file": "giant-kelp.webp",
+    "position": "center",
+    "width": 1280,
+    "height": 851
+  },
+  "reindeer-lichen": {
+    "file": "reindeer-lichen.webp",
+    "position": "center",
+    "width": 1280,
+    "height": 853
+  },
+  "rafflesia": {
+    "file": "rafflesia.webp",
+    "position": "50% 77%",
+    "width": 1059,
+    "height": 1600
+  },
+  "birds-nest-orchid": {
+    "file": "birds-nest-orchid.webp",
+    "position": "50% 25%",
+    "width": 1258,
+    "height": 1600
+  },
+  "parrot-waxcap": {
+    "file": "parrot-waxcap.webp",
+    "position": "center",
+    "width": 1280,
+    "height": 960
+  },
+  "dead-leaf-butterfly": {
+    "file": "dead-leaf-butterfly.webp",
+    "position": "center",
+    "width": 1280,
+    "height": 853
+  },
+  "bulbasaur": {
+    "file": "bulbasaur.png",
+    "position": "center",
+    "width": 96,
+    "height": 96
+  }
+}

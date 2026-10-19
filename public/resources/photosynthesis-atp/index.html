@@ -17,9 +17,10 @@
 header{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr)}.header-left{display:flex;align-items:center;gap:22px;justify-self:start}header nav{justify-self:center}header>.utility{justify-self:end}
 @media(max-width:850px){header{grid-template-columns:1fr auto}.header-left{gap:16px}header nav{grid-column:1/-1;grid-row:2;justify-self:center}header>.utility{grid-column:2;grid-row:1}.header-left .brand{width:auto}}
 </style>
+<link rel="stylesheet" href="plant-game.css">
 </head>
 <body>
-<header><div class="header-left"><a class="back-link" href="/resources/#biology20" aria-label="Back to Bio 20 resources">← Resources</a><span class="brand">BIO 20</span></div><nav aria-label="Activities"><button class="nav" id="tab-activity" aria-current="page">Photosynthesis + ATP</button><button class="nav" id="tab-review">Chloroplast review</button></nav><button class="utility" id="fullscreen">Full screen</button></header>
+<header><div class="header-left"><a class="back-link" href="/resources/#biology20" aria-label="Back to Bio 20 resources">← Resources</a><span class="brand">BIO 20</span></div><nav aria-label="Activities"><button class="nav" id="tab-activity" aria-current="page">Photosynthesis + ATP</button><button class="nav" id="tab-review">Chloroplast review</button><button class="nav" id="tab-plant-game">Plant or not?</button></nav><button class="utility" id="fullscreen">Full screen</button></header>
 <main>
 <section id="activity-page" class="page" aria-labelledby="question">
  <div class="sectionline"><span></span><button class="utility" id="restart">Start again</button></div>
@@ -51,6 +52,61 @@ header{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr)}.head
  </div>
  <div class="review-bottom"><span></span><div class="key-actions"><button class="btn" id="hide-all">Hide all</button><button class="btn primary" id="show-all">Reveal all</button></div></div>
 </section>
+
+<section id="plant-game-page" class="page" aria-labelledby="plant-game-title" hidden>
+  <div class="organism-toolbar">
+    <div class="organism-modes" role="group" aria-label="Choose a round">
+      <button class="organism-mode" id="mode-plant" aria-pressed="true">Plant or not?</button>
+      <button class="organism-mode" id="mode-photo" aria-pressed="false">Photosynthesis?</button>
+    </div>
+    <button class="utility" id="organism-restart">Start again</button>
+  </div>
+  <div class="organism-heading"><h1 id="plant-game-title">Plant or not?</h1><span class="organism-count" id="organism-card-count"></span></div>
+  <p class="organism-note" id="organism-round-note">Is it a land plant? Look closely, then choose.</p>
+  <div class="organism-loading" id="organism-loading"><p id="organism-loading-message">Loading photographs…</p><button class="btn" id="organism-load-retry" hidden>Try again</button></div>
+  <div id="organism-play" hidden>
+    <progress class="organism-progress" id="organism-progress" value="0" max="10" aria-label="Cards completed"></progress>
+    <div class="organism-stage">
+      <div class="organism-card" id="organism-card">
+        <div class="organism-face organism-front" id="organism-front">
+          <div class="organism-photo-wrap" id="organism-photo-wrap"><img class="organism-photo" id="organism-photo" alt="" decoding="async"><p class="organism-photo-status" id="organism-photo-status" hidden>This photograph couldn’t load. Please refresh to try again.</p></div>
+          <div class="organism-content">
+            <p class="organism-tag" id="organism-front-tag">Plant or not?</p>
+            <p class="organism-common" id="organism-common"></p>
+            <p class="organism-species" id="organism-species"></p>
+            <h2 class="organism-question" id="organism-question" tabindex="-1">Is it a plant?</h2>
+            <div class="organism-choices" role="group" aria-labelledby="organism-question"><button class="organism-choice" id="organism-yes">Yes</button><button class="organism-choice" id="organism-no">No</button></div>
+            <p class="organism-hint" id="organism-hint">Choose Yes or No to flip the card.</p>
+            <button class="btn primary organism-front-next" id="organism-front-next" hidden>Next card →</button>
+          </div>
+        </div>
+        <div class="organism-face organism-back" id="organism-back" aria-hidden="true" inert>
+          <div class="organism-back-summary">
+            <p class="organism-result" id="organism-result"></p>
+            <p class="organism-answer" id="organism-back-answer"></p>
+            <p class="organism-your-answer" id="organism-your-answer"></p>
+            <div class="organism-facts"><span id="organism-fact-plant"></span><span id="organism-fact-photo"></span></div>
+          </div>
+          <div class="organism-content">
+            <p class="organism-common" id="organism-back-common"></p>
+            <p class="organism-species" id="organism-back-species"></p>
+            <p class="organism-explanation" id="organism-explanation"></p>
+            <div class="organism-back-actions"><button class="btn" id="organism-see-photo">See photo</button><button class="btn primary" id="organism-next">Next card →</button></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="organism-score" id="organism-score" hidden>
+    <p class="organism-tag">Round complete</p><h2 id="organism-score-heading" tabindex="-1">Your score</h2>
+    <p class="organism-score-value" id="organism-score-value"></p><p class="organism-score-percent" id="organism-score-percent"></p><p class="organism-score-message" id="organism-score-message"></p>
+    <div class="organism-score-actions"><button class="btn primary" id="organism-play-again">Play again</button><button class="btn" id="organism-other-round">Try the photosynthesis round</button><button class="btn" id="organism-retry-missed" hidden>Retry missed cards</button></div>
+    <div class="organism-missed-wrap" id="organism-missed-wrap" hidden><h3>Take another look</h3><ul class="organism-missed" id="organism-missed"></ul></div>
+  </div>
+  <div class="organism-media-info"><a href="plant-game-assets/credits.html" target="_blank" rel="noopener" aria-label="Image credits" title="Image credits">ⓘ</a></div>
+  <p class="screen-reader" id="organism-live" aria-live="polite" aria-atomic="true"></p>
+</section>
+
 </main>
 <div id="effects" class="effects" aria-hidden="true"></div>
 <script>
@@ -79,8 +135,18 @@ function showScore(){clearEffect();const score=answers.reduce((total,a,i)=>total
 function move(delta){if(delta>0&&!revealed)return;const n=index+delta;if(n===questions.length){showScore();return;}if(n>=0&&n<questions.length){clearEffect();index=n;selected=answers[index];revealed=selected!==null;renderQuestion();}}
 function restart(){clearEffect();index=0;selected=null;revealed=false;answers=Array(questions.length).fill(null);$('quiz-panel').hidden=false;$('score-panel').hidden=true;renderQuestion();}
 $('previous').addEventListener('click',()=>move(-1));$('next').addEventListener('click',()=>move(1));$('reveal').addEventListener('click',()=>{if(selected===null||revealed)return;answers[index]=selected;revealed=true;renderQuestion();feedback(selected===questions[index].correct);});$('restart').addEventListener('click',restart);$('play-again').addEventListener('click',restart);
-function showPage(review){clearEffect();$('activity-page').hidden=review;$('review-page').hidden=!review;if(review){$('tab-review').setAttribute('aria-current','page');$('tab-activity').removeAttribute('aria-current');}else{$('tab-activity').setAttribute('aria-current','page');$('tab-review').removeAttribute('aria-current');}location.hash=review?'chloroplast':'activity';}
-$('tab-activity').addEventListener('click',()=>showPage(false));$('tab-review').addEventListener('click',()=>showPage(true));window.addEventListener('hashchange',()=>showPage(location.hash==='#chloroplast'));
+function showPage(page){
+ clearEffect();
+ const current=typeof page==='boolean'?(page?'chloroplast':'activity'):['activity','chloroplast','plant-game'].includes(page)?page:'activity';
+ const pages={'activity':'activity-page','chloroplast':'review-page','plant-game':'plant-game-page'};
+ const tabs={'activity':'tab-activity','chloroplast':'tab-review','plant-game':'tab-plant-game'};
+ for(const [key,id] of Object.entries(pages))$(id).hidden=key!==current;
+ for(const [key,id] of Object.entries(tabs)){if(key===current)$(id).setAttribute('aria-current','page');else $(id).removeAttribute('aria-current');}
+ if(current==='plant-game')window.plantGame?.enter();
+ if(location.hash!=='#'+current)location.hash=current;
+}
+$('tab-activity').addEventListener('click',()=>showPage('activity'));$('tab-review').addEventListener('click',()=>showPage('chloroplast'));$('tab-plant-game').addEventListener('click',()=>showPage('plant-game'));
+window.addEventListener('hashchange',()=>showPage(location.hash.slice(1)));
 const labels=[
  {letter:'A',name:'Outer membrane',x:240,y:12},
  {letter:'B',name:'Inner membrane',x:251,y:34},
@@ -98,8 +164,10 @@ function toggle(letter){if(shown.has(letter))shown.delete(letter);else shown.add
 $('show-all').addEventListener('click',()=>{labels.forEach(l=>shown.add(l.letter));renderLabels();});$('hide-all').addEventListener('click',()=>{shown.clear();renderLabels();});
 $('fullscreen').addEventListener('click',async()=>{try{if(document.fullscreenElement)await document.exitFullscreen();else await document.documentElement.requestFullscreen();}catch{$('fullscreen').textContent='Use F11 for full screen';}});document.addEventListener('fullscreenchange',()=>{$('fullscreen').textContent=document.fullscreenElement?'Exit full screen':'Full screen';});
 document.addEventListener('keydown',e=>{if(e.altKey||e.ctrlKey||e.metaKey||/INPUT|TEXTAREA/.test(e.target.tagName))return;if(!$('activity-page').hidden&&!$('quiz-panel').hidden){if(e.key==='ArrowRight'){e.preventDefault();move(1);}if(e.key==='ArrowLeft'){e.preventDefault();move(-1);}}});
-renderQuestion();renderLabels();if(location.hash==='#chloroplast')showPage(true);
+renderQuestion();renderLabels();showPage(location.hash.slice(1)||'activity');
 </script>
+
+<script src="plant-game.js" defer></script>
 </body>
 </html>
 

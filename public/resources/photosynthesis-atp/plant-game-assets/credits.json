@@ -1,0 +1,101 @@
+{
+  "ghost-pipe": {
+    "file": "ghost-pipe.webp",
+    "species": "Monotropa uniflora",
+    "title": "File:Monotropa uniflora - Ghost Pipe.jpg",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Monotropa_uniflora_-_Ghost_Pipe.jpg",
+    "author": "Jdshide",
+    "license": "CC0",
+    "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "description": "Ghost Pipe - Monotropa uniflora"
+  },
+  "venus-flytrap": {
+    "file": "venus-flytrap.webp",
+    "species": "Dionaea muscipula",
+    "title": "File:Venus Flytrap showing trigger hairs.jpg",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Venus_Flytrap_showing_trigger_hairs.jpg",
+    "author": "Noah Elhardt",
+    "license": "CC BY-SA 2.5",
+    "license_url": "https://creativecommons.org/licenses/by-sa/2.5",
+    "description": "The trap of a Venus fly trap, showing trigger hairs."
+  },
+  "living-stones": {
+    "file": "living-stones.webp",
+    "species": "Lithops aucampiae",
+    "title": "File:Lithops aucampiae var. koelmanii 120502.jpg",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Lithops_aucampiae_var._koelmanii_120502.jpg",
+    "author": "Peter coxhead",
+    "license": "CC0",
+    "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "description": "Lithops aucampiae var. koelmanii in cultivation at the en:Birmingham Botanical Gardens, showing the way in which plants are camouflaged when growing in appropriate surroundings."
+  },
+  "giant-kelp": {
+    "file": "giant-kelp.webp",
+    "species": "Macrocystis pyrifera",
+    "title": "File:Macrocystis pyrifera kelp forest Cojo Anchorage.jpg",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Macrocystis_pyrifera_kelp_forest_Cojo_Anchorage.jpg",
+    "author": "Robert Schwemmer, NOAA",
+    "license": "Public domain",
+    "license_url": null,
+    "description": "\"Kelp (Macrocystis pyrifera) forest located at Cojo Anchorage near Point Conception, Calif., hosts a variety of invertebrates, fish and marine mammals.\""
+  },
+  "reindeer-lichen": {
+    "file": "reindeer-lichen.webp",
+    "species": "Cladonia rangiferina",
+    "title": "File:Cladonia rangiferina 115193106.jpg",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Cladonia_rangiferina_115193106.jpg",
+    "author": "jensu",
+    "license": "CC0",
+    "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "description": "gray reindeer lichen (Cladonia rangiferina)"
+  },
+  "rafflesia": {
+    "file": "rafflesia.webp",
+    "species": "Rafflesia arnoldii",
+    "title": "File:Rafflesia Arnoldii Batang Palupuah Indonesia.jpg",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Rafflesia_Arnoldii_Batang_Palupuah_Indonesia.jpg",
+    "author": "Maizal Chaniago",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "description": "Rafflesia Arnoldii, the giant rare flower. Photo Location\u00c2\u00a0: Batang Palupuah, West Sumatra, Indonesia."
+  },
+  "birds-nest-orchid": {
+    "file": "birds-nest-orchid.webp",
+    "species": "Neottia nidus-avis",
+    "title": "File:Neottia nidus-avis RF.jpg",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Neottia_nidus-avis_RF.jpg",
+    "author": "Robert Flogaus-Faust",
+    "license": "CC BY 4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0",
+    "description": "Bird's-nest orchid (Neottia nidus-avis), circular footpath 2 at Hirschkopf near M\u00c3\u00b6ssingen, Germany"
+  },
+  "parrot-waxcap": {
+    "file": "parrot-waxcap.webp",
+    "species": "Gliophorus psittacinus",
+    "title": "File:Gliophorus psittacinus 169570360.jpg",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Gliophorus_psittacinus_169570360.jpg",
+    "author": "Alan Rockefeller",
+    "license": "CC BY 4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0",
+    "description": "Parrot Mushroom (Gliophorus psittacinus)"
+  },
+  "dead-leaf-butterfly": {
+    "file": "dead-leaf-butterfly.webp",
+    "species": "Kallima inachus",
+    "title": "File:Orange oakleaf (Kallima inachus) underside Kuang Si.jpg",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Orange_oakleaf_(Kallima_inachus)_underside_Kuang_Si.jpg",
+    "author": "Charles J. Sharp",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "description": "Orange oakleaf (Kallima inachus inachus), Kuang Si, Luang Prabang, Laos"
+  },
+  "bulbasaur": {
+    "file": "bulbasaur.png",
+    "species": "Bulbasaur (fictional; no scientific binomial)",
+    "source_url": "https://github.com/PokeAPI/sprites",
+    "author": "Game Freak / Nintendo / The Pokemon Company",
+    "license": "Copyrighted game sprite; educational bonus use",
+    "license_url": "",
+    "description": "Classic Bulbasaur game pixel sprite"
+  }
+}
