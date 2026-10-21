@@ -1,17 +1,33 @@
 <!doctype html>
+
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Photosynthesis Review | Biology 20</title><meta name="description" content="A clear teacher-led review from plant to chloroplast to the light reactions."><link rel="stylesheet" href="style.css"></head>
+
 <body>
-<header class="top"><div class="tools"><a href="/resources/?course=biology20" class="reminders-link">Bio 20 resources</a><a href="reminders.html" class="reminders-link">Class reminders</a><button id="fullscreen" aria-label="Toggle full screen">Full screen ⛶</button></div></header>
+
+<header class="top"><a class="resource-back" href="/resources/#biology20" aria-label="Back to Bio 20 resources">← Resources</a><div class="tools"><a href="reminders.html" class="reminders-link">Class reminders</a><button id="fullscreen" aria-label="Toggle full screen">Full screen ⛶</button></div></header>
+
 <nav id="sections" aria-label="Lesson sections"></nav>
+
 <main class="deck" aria-labelledby="question">
+
  <div class="question-row"><div class="step-meta"><span id="counter"></span></div><h1 id="question"></h1></div>
+
  <div class="stage-row"><nav id="trail" aria-label="Current scale"></nav><div class="visual"><div id="scene"></div><div id="bridge" aria-hidden="true"></div><button id="enlarge" aria-label="Enlarge picture">↗</button></div><div id="figure-caption"></div></div>
- <div class="answer-row"><div id="answer" aria-live="polite"></div><span id="answer-prompt">Think first, then reveal.</span></div>
+
+ <div class="answer-row"><div id="answer" aria-live="polite"></div><span id="answer-prompt">Think first.</span></div>
+
 </main>
+
 <footer class="controls"><button id="back" class="secondary">← Back</button><label class="jump-label"><span class="sr-only">Jump to a question</span><select id="jump" aria-label="Jump to a question"></select></label><button id="reveal" class="primary">Reveal answer</button><button id="next" class="secondary">Next →</button></footer>
+
 <p id="status" class="status" role="status">← → Move · Enter / Space Reveal · F Full screen</p>
 
+
+
 <dialog id="picture-dialog"><button class="close" aria-label="Close reference picture">×</button><h2 id="picture-title">Reference picture</h2><div id="picture"></div><p>From your supplied teaching slides.</p></dialog>
+
+
+
 
 
 <script src="content.js"></script><script src="diagrams.js"></script><script src="light-capture.js"></script><script src="foundations.js"></script><script src="app.js"></script></body></html>
