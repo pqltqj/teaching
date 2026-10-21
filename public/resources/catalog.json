@@ -18,6 +18,13 @@
       "name": "Biology 20",
       "resources": [
         {
+          "date": "2026-10-22",
+          "title": "Photosynthesis: The Calvin Cycle",
+          "type": "Unit C · Board activity",
+          "summary": "Follow carbon through fixation, reduction and regeneration, and see how ATP and NADPH help build sugars.",
+          "href": "/resources/calvin-cycle/"
+        },
+        {
           "date": "2026-10-21",
           "title": "Photosynthesis: Light Reactions Review",
           "type": "Unit C · Board activity",
