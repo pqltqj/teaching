@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Class Reminders | Biology 20</title><link rel="stylesheet" href="reminders.css"></head>
+<body>
+<header><a class="back" href="index.html">← Photosynthesis review</a><button id="fullscreen" type="button">Full screen ⛶</button></header>
+<main>
+ <h1>Class reminders</h1>
+ <div class="tabs" role="tablist" aria-label="Class reminders">
+  <button id="study-tab" role="tab" aria-selected="true" aria-controls="study" tabindex="0">Studying</button>
+  <button id="expectations-tab" role="tab" aria-selected="false" aria-controls="expectations" tabindex="-1">Expectations</button>
+  <button id="notes-tab" role="tab" aria-selected="false" aria-controls="notes" tabindex="-1">Effective notes</button>
+ </div>
+ <section id="study" role="tabpanel" aria-labelledby="study-tab">
+  <h2>Studying</h2>
+  <ul>
+   <li>Every day we have class, you should spend <strong>at least 30 minutes</strong> reviewing what we learned and making sure you understand it.</li>
+   <li>Biology is a tough subject. There are lots of details to remember, new terms to learn, and sequences to keep track of. You also need to understand how everything fits together.</li>
+   <li>Sometimes things only make sense once you have more context. Keep going back to the diagrams. As we learn more, more of what you are looking at should start to make sense.</li>
+   <li>It is not enough to come to class, half pay attention, and hope you can get by. You need to put in time outside of class if you want to succeed.</li>
+   <li>If you need help or are falling behind, <strong>come see me</strong>. I can arrange a time to help you out, but I need you to let me know.</li>
+  </ul>
+ </section>
+ <section id="expectations" role="tabpanel" aria-labelledby="expectations-tab" hidden>
+  <h2>Expectations</h2>
+  <ul>
+   <li>I will give you plenty of time to write notes, and I don’t mind chatting during that time.</li>
+   <li>When I move to a new slide and start talking, that is your sign to <strong>stop your conversation and listen</strong>.</li>
+   <li>Talking while I am explaining is distracting and makes me lose my train of thought. It also makes it harder for the people around you to follow along.</li>
+   <li>You have much more time to chat and write notes than I spend explaining. You can wait the minute or so it takes for me to explain a slide and answer questions. It is a basic sign of respect.</li>
+   <li>I want you to ask questions when you do not understand. But it is frustrating when someone has not been listening and then asks me to repeat what I literally just covered.</li>
+  </ul>
+ </section>
+ <section id="notes" role="tabpanel" aria-labelledby="notes-tab" hidden>
+  <h2>Effective note taking</h2>
+  <ul>
+   <li>Use <strong>short phrases</strong> to reduce your writing time and spend more time understanding the information.</li>
+   <li>You should not be writing most things down word for word if you can help it.</li>
+   <li>There is no point writing something down if you do not understand it. If something does not make sense, ask.</li>
+   <li>If you go to university, you will have much less time to write notes during lectures. Your professors will keep moving without going back to previous slides.</li>
+   <li>This is a good skill to practice now.</li>
+   <li><strong>Keep everything I hand out to you.</strong> It is there for you to use when studying, and anything I hand out is fair game for the test.</li>
+  </ul>
+ </section>
+</main>
+<script>
+const tabs=Array.from(document.querySelectorAll('[role="tab"]'));
+function selectTab(tab,focus=false){tabs.forEach(t=>{const active=t===tab;t.setAttribute('aria-selected',String(active));t.tabIndex=active?0:-1;document.getElementById(t.getAttribute('aria-controls')).hidden=!active;});if(focus)tab.focus();history.replaceState(null,'','#'+tab.getAttribute('aria-controls'));}
+tabs.forEach((tab,i)=>{tab.addEventListener('click',()=>selectTab(tab));tab.addEventListener('keydown',e=>{let n;if(e.key==='ArrowRight')n=(i+1)%tabs.length;else if(e.key==='ArrowLeft')n=(i+tabs.length-1)%tabs.length;else if(e.key==='Home')n=0;else if(e.key==='End')n=tabs.length-1;else return;e.preventDefault();selectTab(tabs[n],true);});});
+const saved=tabs.find(t=>'#'+t.getAttribute('aria-controls')===location.hash);if(saved)selectTab(saved);
+document.getElementById('fullscreen').addEventListener('click',async()=>{try{if(document.fullscreenElement)await document.exitFullscreen();else await document.documentElement.requestFullscreen();}catch{document.getElementById('fullscreen').textContent='Use browser full screen';}});
+</script>
+</body></html>

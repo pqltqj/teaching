@@ -1,0 +1,19 @@
+PHOTOSYSTEM
+Edit target: supplied photosystem figure. Remove ALL text, labels, brackets and leader lines, ALL arrows (yellow photon zigzag, black energy-transfer arrows, central yellow electron arrow), and figure numbers. Preserve exactly the original lipid membrane and purple protein complex, green pigment circles, special green chlorophyll pair and blue centre with its small blue rectangular acceptor. Retain their exact positions, proportions and colors, and original 1630:1125 composition including white space at right. Seamlessly fill removed items using original backgrounds. No new text or objects. This is an unlabeled base for precise web animation overlays.
+
+EXCITATION
+Edit target: supplied electron excitation figure. Remove ALL text labels, ALL arrows and zigzags, all black leader lines and vertical energy axis. Retain only the exact original green flattened chlorophyll molecule disk at bottom, with its contours and shading, on clean white background. Keep the disk at exactly the same position and size within the original 622:580 framing. All else blank white. We will overlay accurate energy-level arrows, labels and animations in the website. No new text or objects.
+
+
+OVERVIEW-CYCLE
+Remove ALL text, ALL arrows and ALL central materials from this exact diagram EXCEPT preserve the original blue Calvin-cycle circle and its blue circular arrows (but remove all text inside it). Keep original chloroplast envelope, left thylakoid stack and two small right background stacks, original pale interior and exact composition 1508:901. Remove CO2/light/water/oxygen arrows, ATP star, NADPH box, connecting arrows, G3P/sugars/arrows. Only chloroplast artwork, thylakoids, and unlabeled blue circular cycle remain. No new objects or text.
+
+OVERVIEW-NO-ENERGY
+Change only the central ATP and NADPH part of this exact photosynthesis overview. Remove the ATP text AND star shape, the NADPH text AND rectangular box, and the two entire arrow pathways connecting left thylakoids to right Calvin cycle THROUGH ATP and NADPH (remove red and blue segments of these two pathways). Seamlessly restore pale chloroplast interior beneath removed items. Preserve every other original label and structure, including NADP+, ADP+Pi, Calvin cycle/stroma, water/light/oxygen, G3P, sugars and all their arrows. Same exact composition and positions.
+
+OVERVIEW-NO-SUGARS
+Change only the carbohydrate outputs of this exact photosynthesis overview. Remove ALL G3P, glucose, starch, sucrose text and the entire output arrows from the bottom of the Calvin cycle to G3P, glucose, starch and sucrose. Restore underlying chloroplast interior/envelope or white background seamlessly. Preserve ALL other original labels, structures, and arrows: ATP star, NADPH box, NADP+, ADP+Pi, Calvin cycle/stroma, CO2, water/light/oxygen and chloroplast/thylakoids. Keep exact original composition 1508:901.
+
+
+BUILT-IN IMAGE EDITING: overview-no-energy-or-sugars.png
+Edit this exact chloroplast overview: remove ALL carbohydrate output text G3P, glucose, starch, sucrose and ALL arrows leading out of the bottom of the Calvin cycle to these products. Restore the chloroplast interior, envelope and white background seamlessly. Preserve everything else exactly, including NADP+, ADP+Pi, light-dependent reactions, Calvin cycle/stroma, water/light/oxygen arrows and all original shapes. The ATP/NADPH region is already blank: keep it blank. Do not add text or objects. Same exact composition.
