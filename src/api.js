@@ -1,3 +1,4 @@
+import {calendarState, updateCalendar} from './calendar.js';
 const cookieName = '__Host-review-session';
 const sessionMs = 8 * 60 * 60 * 1000;
 const json = (body, status = 200, extra = {}) => Response.json(body, {status, headers: {'Cache-Control': 'no-store, private', 'X-Content-Type-Options': 'nosniff', ...extra}});
@@ -67,6 +68,7 @@ export async function handleApi(request, env, storage) {
     return json({teacher: false}, 200, {'Set-Cookie': `${cookieName}=; Path=/; Secure; HttpOnly; SameSite=Strict; Max-Age=0`});
   }
   const isTeacher = await teacher(request, env, storage);
+  if (path === '/api/calendar' && method === 'GET') return json(await calendarState(storage, isTeacher));
   const previewBank = path === '/api/preview/bank';
   if ((path === '/api/bank' || previewBank) && method === 'GET') {
     if (previewBank && !await teacher(request, env, storage, 'preview')) return json({error: 'Enter your teacher passphrase to preview on this device.'}, 401);
@@ -84,6 +86,10 @@ export async function handleApi(request, env, storage) {
     return json({teacher: isTeacher, courses});
   }
   if (!isTeacher) return json({error: 'Sign in with your teacher password.'}, 401);
+  if (path === '/api/calendar' && method === 'POST') {
+    const result = await updateCalendar(storage, await readJson(request, 26000));
+    return json(result.body, result.status);
+  }
   if (path === '/api/lock' && method === 'POST') {
     const body = await readJson(request, 2000);
     if (!body || typeof body.locked !== 'boolean') return json({error: 'Invalid lock setting.'}, 400);

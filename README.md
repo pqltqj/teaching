@@ -88,3 +88,12 @@ ejosey.ca is the primary Cloudflare Worker custom domain; www.ejosey.ca forwards
 ## Automatic production deployments
 
 Cloudflare Workers Builds is connected to `pqltqj/teaching` on `main`. Production commits deploy with `npx wrangler deploy`; preview builds are disabled. The Bio 20 photosynthesis, ATP and chloroplast board activity is listed as one resource at `/resources/photosynthesis-atp/`.
+
+
+## Class calendar
+
+The small calendar button at the bottom left of the home screen opens `/calendar/`. It shows October–December 2026 with Sunday-first weeks and entries from October 26 onward. Planner blocks appear in timetable order: Biology 30, Chemistry 20, Biology 20. Science 10 is omitted. Whole-day notes include PLF, ATA Day, Remembrance Day and Christmas break. November 30 is transcribed from the December planner spread. The November 26 chemistry page number is cut off in the photograph and is intentionally omitted.
+
+The existing teacher sign-in permits editing each day's three class entries and whole-day note. Public readers cannot write, and Smartboard preview sessions do not grant editing. Changes use separate `calendar:` records in the existing Durable Object, persist across deployments and devices, and leave the review bank and student drafts intact. Each day has a revision to reject concurrent stale saves. Emptying fields clears that day's printed entries. The planner defaults live in `src/calendar-seed.js`; saved teacher overrides take precedence. No new Cloudflare binding, secret or migration is needed.
+
+Calendar tests cover the supplied date/course mapping, public reads, authenticated writes, origin checks, preview-session rejection, persistence, input bounds, concurrent-edit conflicts, and clearing entries.
