@@ -1,5 +1,14 @@
 // Server-side only. Do not copy answers into public assets.
-const category = (name, items) => ({name, clues:items.map(([prompt,answer,note],i)=>({id:name.toLowerCase().replace(/[^a-z]+/g,'-')+'-'+i,value:(i+1)*100,prompt,answer,note}))});
+const categoryNames = {
+ 'Structure detectives':'Reproductive Anatomy',
+ 'Hormone headquarters':'Reproductive Hormones',
+ 'Cycle case files':'Menstrual Cycle',
+ 'From one cell':'Gametes and Early Development',
+ 'Pregnancy and beyond':'Pregnancy and Birth',
+ 'Reproduction problem lab':'Fertility and Reproductive Technologies'
+};
+// Keep clue IDs stable so games already in progress survive label changes.
+const category = (name, items) => ({name:categoryNames[name]||name, clues:items.map(([prompt,answer,note],i)=>({id:name.toLowerCase().replace(/[^a-z]+/g,'-')+'-'+i,value:(i+1)*100,prompt,answer,note}))});
 export const jeopardyCategories = [
 category('Structure detectives',[
  ['This muscular organ houses the endometrium and is the usual location of prenatal development.','Uterus.','Distinguish the uterus from the oviduct, the usual fertilization site.'],

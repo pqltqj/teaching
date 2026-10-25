@@ -8,7 +8,7 @@ const active=r=>r.current==='final'?finalChallenge:allClues.find(c=>c.id===r.cur
 const scoreState=r=>structuredClone({scores:r.teams.map(t=>t.score),used:r.used,current:r.current,phase:r.phase,buzz:r.buzz,excluded:r.excluded,deadline:r.deadline,final:r.final,control:r.control});
 function view(r,host=false){
  const clue=active(r),shown=r.phase==='reveal'||r.phase==='ended';
- return {code:r.code,revision:r.revision,expires:r.expires,phase:r.phase,current:r.current,used:r.used,control:r.control,penalties:r.penalties,duration:r.duration,deadline:r.deadline,serverTime:Date.now(),teams:r.teams.map(t=>({...t})),players:r.players.map(p=>({id:p.id,name:p.name,team:p.team})),buzz:r.buzz,excluded:r.excluded,categories:jeopardyCategories.map(c=>({name:c.name,clues:c.clues.map(q=>({id:q.id,value:q.value}))})),clue:clue?{prompt:r.phase==='wager'&&!host?'':clue.prompt,value:r.current==='final'?null:clue.value,category:r.current==='final'?finalChallenge.category:jeopardyCategories.find(c=>c.clues.some(q=>q.id===r.current)).name,...(host||shown?{answer:clue.answer,note:clue.note}:{})}:null,final:r.final?{...((host||shown)?{wagers:r.final.wagers,answers:r.final.answers}:{}),submitted:Object.keys(r.final.answers).map(Number),wagered:Object.keys(r.final.wagers).map(Number),graded:r.final.graded}:null,...(host?{host:true,canUndo:!!r.undo}:{})};
+ return {code:r.code,revision:r.revision,expires:r.expires,phase:r.phase,current:r.current,used:r.used,control:r.control,penalties:r.penalties,duration:r.duration,deadline:r.deadline,serverTime:Date.now(),teams:r.teams.map(t=>({...t})),players:r.players.map(p=>({id:p.id,name:p.name,team:p.team})),buzz:r.buzz,excluded:r.excluded,feedback:r.feedback||null,categories:jeopardyCategories.map(c=>({name:c.name,clues:c.clues.map(q=>({id:q.id,value:q.value}))})),clue:clue?{prompt:r.phase==='wager'&&!host?'':clue.prompt,value:r.current==='final'?null:clue.value,category:r.current==='final'?finalChallenge.category:jeopardyCategories.find(c=>c.clues.some(q=>q.id===r.current)).name,...(host||shown?{answer:clue.answer,note:clue.note}:{})}:null,final:r.final?{...((host||shown)?{wagers:r.final.wagers,answers:r.final.answers}:{}),submitted:Object.keys(r.final.answers).map(Number),wagered:Object.keys(r.final.wagers).map(Number),graded:r.final.graded}:null,...(host?{host:true,canUndo:!!r.undo}:{})};
 }
 export async function handleJeopardy(request,storage,isTeacher,readJson){
  const path=new URL(request.url).pathname,parts=path.split('/').filter(Boolean),method=request.method;
@@ -86,7 +86,7 @@ export async function handleJeopardy(request,storage,isTeacher,readJson){
      if(r.phase!=='buzzed'||!r.buzz||typeof body.correct!=='boolean')fail('Wait for a team to buzz.');const team=r.buzz.team,value=active(r).value;
      if(body.correct){r.teams[team].score+=value;r.control=team;r.phase='reveal';if(!r.used.includes(r.current))r.used.push(r.current)}
      else {if(r.penalties)r.teams[team].score-=value;r.excluded.push(team);r.phase='closed';r.buzz=null}
-     r.deadline=null;break;
+     r.feedback={id:crypto.randomUUID(),correct:body.correct,team,delta:body.correct?value:r.penalties?-value:0,at:Date.now()};r.deadline=null;break;
     }
     case 'reveal':if(!r.current||r.current==='final'||!['thinking','open','closed','buzzed'].includes(r.phase))fail('Choose an unrevealed clue first.');r.phase='reveal';r.deadline=null;if(!r.used.includes(r.current))r.used.push(r.current);break;
     case 'board':if(r.phase!=='reveal'||r.current==='final')fail('Reveal the current clue before returning to the board.');r.phase='board';r.current=null;r.buzz=null;r.excluded=[];r.deadline=null;break;
@@ -95,10 +95,11 @@ export async function handleJeopardy(request,storage,isTeacher,readJson){
     case 'final':if(r.phase!=='board')fail('Return to the board first.');r.current='final';r.phase='wager';r.final={wagers:{},answers:{},graded:[]};r.buzz=null;r.deadline=null;break;
     case 'final-start':if(r.phase!=='wager')fail('Open final wagering first.');for(let t=0;t<3;t++)r.final.wagers[t]??=0;r.phase='final';r.deadline=Date.now()+90000;break;
     case 'final-reveal':if(r.phase!=='final')fail('Start the final challenge first.');r.phase='reveal';r.deadline=null;break;
-    case 'final-judge':if(r.current!=='final'||r.phase!=='reveal'||![0,1,2].includes(body.team)||typeof body.correct!=='boolean'||r.final.graded.includes(body.team))fail('This final response cannot be scored.');r.teams[body.team].score+=(body.correct?1:-1)*r.final.wagers[body.team];r.final.graded.push(body.team);break;
+    case 'final-judge':if(r.current!=='final'||r.phase!=='reveal'||![0,1,2].includes(body.team)||typeof body.correct!=='boolean'||r.final.graded.includes(body.team))fail('This final response cannot be scored.');{const delta=(body.correct?1:-1)*r.final.wagers[body.team];r.teams[body.team].score+=delta;r.final.graded.push(body.team);r.feedback={id:crypto.randomUUID(),correct:body.correct,team:body.team,delta,at:Date.now()};}break;
     case 'end':r.phase='ended';r.deadline=null;r.expires=Math.min(r.expires,Date.now()+60*60*1000);break;
     default:fail('Unknown game action.');
    }
+   if(['pick','open','reveal','board','undo','final','final-start','final-reveal','end'].includes(action))r.feedback=null;
    if(keepUndo)r.undo=snapshot;r.ops.push(body.op);r.ops=r.ops.slice(-100);r.revision++;await txn.put('jeopardy:'+code,r);return json(view(r,true));
   });
  }catch(error){if(error.status)return json({error:error.message},error.status);throw error}

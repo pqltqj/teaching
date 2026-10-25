@@ -24,6 +24,8 @@ test('six categories contain thirty progressive clues, distinct prompts and a fi
  assert.equal(jeopardyCategories.length,6);assert.equal(allClues.length,30);assert.equal(new Set(allClues.map(q=>q.id)).size,30);assert.equal(new Set(allClues.map(q=>q.prompt)).size,30);
  for(const c of jeopardyCategories)assert.deepEqual(c.clues.map(q=>q.value),[100,200,300,400,500]);
  for(const q of [...allClues,finalChallenge])for(const key of ['prompt','answer','note'])assert.ok(q[key]);
+ assert.equal(jeopardyCategories[0].name,'Reproductive Anatomy');
+ assert.equal(allClues[0].id,'structure-detectives-0','renaming a category must not break active games');
 });
 test('only actual teachers can host, control or read private answers; public views stay redacted',async()=>{
  const h=await harness();assert.equal((await h.call('/api/jeopardy',{})).status,401);
@@ -51,11 +53,13 @@ test('simultaneous buzzes yield exactly one winner; repeat and expired buzzes ar
 test('incorrect teams cannot steal again; correct scoring and retries are atomic; undo restores board',async()=>{
  const h=await harness(),a=await h.join(0),b=await h.join(1);await h.host('start');await h.host('pick',{id:allClues[0].id});await h.host('open');
  await h.call(h.path,{action:'buzz',token:a.token});await h.host('judge',{correct:false});assert.equal(h.state.teams[0].score,0);
+ assert.deepEqual({correct:h.state.feedback.correct,team:h.state.feedback.team,delta:h.state.feedback.delta},{correct:false,team:0,delta:0});
+ const incorrectPublic=await(await h.call(h.path)).json();assert.equal(incorrectPublic.feedback.id,h.state.feedback.id);assert.equal(incorrectPublic.clue.answer,undefined);
  await h.host('open');assert.equal((await h.call(h.path,{action:'buzz',token:a.token})).status,409);await h.call(h.path,{action:'buzz',token:b.token});
  const room=await(await h.call(h.path+'?host=1',undefined,h.cookie)).json();const op={action:'judge',correct:true,op:crypto.randomUUID(),revision:room.revision};
- let r=await h.call(h.path,op,h.cookie);assert.equal((await r.json()).teams[1].score,100);r=await h.call(h.path,op,h.cookie);assert.equal((await r.json()).teams[1].score,100);
+ let r=await h.call(h.path,op,h.cookie);const awarded=await r.json();assert.equal(awarded.teams[1].score,100);assert.equal(awarded.feedback.correct,true);assert.equal(awarded.feedback.delta,100);r=await h.call(h.path,op,h.cookie);const repeated=await r.json();assert.equal(repeated.teams[1].score,100);assert.equal(repeated.feedback.id,awarded.feedback.id,'retries must not trigger another celebration');
  const pub=await(await h.call(h.path)).json();assert.equal(pub.clue.answer,allClues[0].answer);
- await h.host('undo');assert.equal(h.state.teams[1].score,0);assert.equal(h.state.phase,'buzzed');assert.equal(h.state.used.length,0);
+ await h.host('undo');assert.equal(h.state.teams[1].score,0);assert.equal(h.state.phase,'buzzed');assert.equal(h.state.used.length,0);assert.equal(h.state.feedback,null);
 });
 test('traditional penalties are optional; stale control actions cannot overwrite a newer game',async()=>{
  const h=await harness(),a=await h.join();let room=await h.store.get('jeopardy:'+h.state.code);room.penalties=true;await h.store.put('jeopardy:'+room.code,room);
