@@ -1,4 +1,5 @@
-// Transcribed from the mentor planner. Block 2 (Science 10) is intentionally omitted.
+// Based on the mentor planner; C1 teaching days follow the Cell Division slides.
+// Quiz, test and review days are preserved. Block 2 (Science 10) is intentionally omitted.
 // November 30 is on the December spread. Entries before October 26 are excluded.
 export const calendarCourses = [
   {id: 'biology30', name: 'Biology 30'},
@@ -8,14 +9,14 @@ export const calendarCourses = [
 const lessons = [
   ['2026-10-26', 'Review', 'Quiz', 'Cellular respiration: usable forms of energy'],
   ['2026-10-27', 'Reproduction test', 'Net ionic equations (p. 6)', 'Glycolysis'],
-  ['2026-10-28', 'Cellular reproduction: meiosis and mitosis', 'Qualitative analysis (p. 7)', 'Krebs cycle'],
-  ['2026-10-29', 'Chromosome structure', 'Precipitation lab', 'Electron transport chain'],
-  ['2026-11-02', 'Clones', 'Precipitation lab', 'Anaerobic respiration'],
-  ['2026-11-03', 'Mitosis and telomeres', 'Solubility', 'Review'],
-  ['2026-11-04', 'Steps in meiosis', 'Pressure and solubility lab', 'Photosynthesis and cellular respiration test'],
+  ['2026-10-28', 'C1: Chromosomes, homologues and sister chromatids; haploid/diploid; interphase (slides 1–17)', 'Qualitative analysis (p. 7)', 'Krebs cycle'],
+  ['2026-10-29', 'C1: Mitosis, cytokinesis and cancer (slides 18–35)', 'Precipitation lab', 'Electron transport chain'],
+  ['2026-11-02', 'C1: Cloning, stem cells and telomeres; cloning and stem-cell ethics activity (slides 36–45)', 'Precipitation lab', 'Anaerobic respiration'],
+  ['2026-11-03', 'C1: Meiosis I and II, crossing over, independent assortment and gametogenesis (slides 46–63)', 'Solubility', 'Review'],
+  ['2026-11-04', 'C1 activity: Model mitosis and meiosis; track chromosomes, chromatids and ploidy', 'Pressure and solubility lab', 'Photosynthesis and cellular respiration test'],
   ['2026-11-05', 'Mitosis quiz', 'Quiz', 'Carbohydrates'],
-  ['2026-11-09', 'Cell division and life cycles', 'Acids and bases (p. 1)', 'Polysaccharides'],
-  ['2026-11-10', 'Abnormal meiosis', 'Monoprotic and polyprotic acids/bases (pp. 2–3)', 'Lipids'],
+  ['2026-11-09', 'C1: Nondisjunction and reproductive strategies (slides 64–77)', 'Acids and bases (p. 1)', 'Polysaccharides'],
+  ['2026-11-10', 'C1: Alternation of generations; map sporophyte/gametophyte life cycles (slides 78–83)', 'Monoprotic and polyprotic acids/bases (pp. 2–3)', 'Lipids'],
   ['2026-11-12', 'Review', 'Calculating pOH (pp. 4–5)', 'Enzymes'],
   ['2026-11-13', 'Mitosis and meiosis test', 'Calculating concentrations using pH or pOH (pp. 6–7)', 'Quiz'],
   ['2026-11-16', 'Genetics', 'Indicators (p. 8)', 'Nutrients lab'],
