@@ -32,7 +32,17 @@ function joinForm(){return `<section class="student"><p class="eyebrow">GAME ${s
 function studentControls(){const team=identity?.team,own=state.players.find(p=>p.id===me);if(!own)return '';if(state.phase==='wager')return `<form id="wager-form" class="panel stack"><h3>One wager for ${escape(state.teams[team].name)}</h3><p>Choose one representative to submit. The first submission locks your team wager.</p>${state.final.wagered.includes(team)?'<strong>Team wager locked.</strong>':`<label>Wager (0–${Math.max(0,state.teams[team].score)})<input name="amount" type="number" min="0" max="${Math.max(0,state.teams[team].score)}" step="1" required value="0"></label><button>Lock team wager</button>`}</form>`;
  if(state.phase==='final')return `<form id="final-form" class="panel stack"><h3>One answer for your team</h3>${state.final.submitted.includes(team)?'<strong>Team response locked. Discuss while the other teams finish.</strong>':'<label>Team answer<textarea name="answer" maxlength="1000" required placeholder="Explain the causal chain…"></textarea></label><button data-final-submit>Lock team answer</button>'}</form>`;
  if(!state.current)return '';return `<button class="buzz-button" data-action="buzz" data-buzzer disabled>BUZZ IN</button><p class="subtle" id="buzz-help">${escape(state.excluded.includes(team)?'Your team has already tried this clue. Listen to the other teams.':'Any teammate can buzz. Your teacher will judge your spoken answer.')}</p>`}
-function render(){if(!state){if(!code){mode==='host'?setup():landing()}return}document.body.classList.toggle('projection',mode==='display');
+function render(){
+ const focused=document.activeElement;
+ const drafts=[...app.querySelectorAll('input,textarea,select')].map(n=>({form:n.form?.id,name:n.name,id:n.id,type:n.type,value:n.value,checked:n.checked,focused:n===focused,start:n.selectionStart,end:n.selectionEnd}));
+ renderScreen();
+ for(const n of app.querySelectorAll('input,textarea,select')){
+  const old=drafts.find(d=>d.form===n.form?.id&&d.name===n.name&&d.id===n.id&&d.type===n.type&&(n.type!=='radio'||d.value===n.value));if(!old)continue;
+  n.value=old.value;if(['checkbox','radio'].includes(n.type))n.checked=old.checked;
+  if(old.focused){n.focus({preventScroll:true});if(typeof old.start==='number'&&n.setSelectionRange)try{n.setSelectionRange(old.start,old.end)}catch{}}
+ }
+}
+function renderScreen(){if(!state){if(!code){mode==='host'?setup():landing()}return}document.body.classList.toggle('projection',mode==='display');
  if(mode==='join'&&!state.players.some(p=>p.id===me)){app.innerHTML=joinForm();return}
  const student=mode==='join',joinURL=location.origin+location.pathname+'?code='+code;
  let html=`<div class="${student?'student':''}"><div class="toolbar"><div><p class="eyebrow">${mode==='host'?'TEACHER CONTROLS':mode==='display'?'CLASSROOM BOARD':'YOUR TEAM SCREEN'}</p><span class="pin">${code}</span>${student?`<p class="subtle">Playing as ${escape(state.players.find(p=>p.id===me)?.name)}</p>`:''}</div><div>${mode==='host'?`<a class="join-link" target="_blank" rel="noopener" href="?view=display&code=${code}">Open projector view ↗</a><p class="subtle">Keep this teacher tab off the projector.</p>`:mode==='display'?`<p>Join at <strong>${escape(location.host+location.pathname)}</strong></p>`:''}</div></div>${scores()}`;
