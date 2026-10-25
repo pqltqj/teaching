@@ -1,4 +1,5 @@
 import {calendarState, updateCalendar} from './calendar.js';
+import {handleJeopardy} from './jeopardy.js';
 const cookieName = '__Host-review-session';
 const sessionMs = 8 * 60 * 60 * 1000;
 const json = (body, status = 200, extra = {}) => Response.json(body, {status, headers: {'Cache-Control': 'no-store, private', 'X-Content-Type-Options': 'nosniff', ...extra}});
@@ -68,6 +69,7 @@ export async function handleApi(request, env, storage) {
     return json({teacher: false}, 200, {'Set-Cookie': `${cookieName}=; Path=/; Secure; HttpOnly; SameSite=Strict; Max-Age=0`});
   }
   const isTeacher = await teacher(request, env, storage);
+  if (path === '/api/jeopardy' || path.startsWith('/api/jeopardy/')) return handleJeopardy(request, storage, isTeacher, readJson);
   if (path === '/api/calendar' && method === 'GET') return json(await calendarState(storage, isTeacher));
   const previewBank = path === '/api/preview/bank';
   if ((path === '/api/bank' || previewBank) && method === 'GET') {

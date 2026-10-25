@@ -5,6 +5,13 @@
       "name": "Biology 30",
       "resources": [
         {
+          "date": "2026-10-26",
+          "title": "Reproduction Team Jeopardy",
+          "type": "Unit B · Live team review",
+          "summary": "Join one of three teams for a reproduction review: six categories, clues from 100 to 500 points, live buzzers and a final challenge.",
+          "href": "/resources/reproduction-jeopardy/"
+        },
+        {
           "date": "2026-10-19",
           "title": "Human Reproductive Technology",
           "type": "Unit B · Case study",
