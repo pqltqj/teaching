@@ -26,6 +26,10 @@ test('six categories contain thirty progressive clues, distinct prompts and a fi
  for(const q of [...allClues,finalChallenge])for(const key of ['prompt','answer','note'])assert.ok(q[key]);
  assert.equal(jeopardyCategories[0].name,'Reproductive Anatomy');
  assert.equal(allClues[0].id,'structure-detectives-0','renaming a category must not break active games');
+ assert.ok(allClues.every(q=>q.answer.split(/\s+/).length<=7),'board responses should be a few words');
+ assert.ok(allClues.some(q=>q.prompt.includes('cytoplasmic transfer')));
+ assert.ok(allClues.some(q=>q.answer.startsWith('GIFT')));
+ assert.ok(!JSON.stringify(allClues).match(/azoospermia|ICSI/i));
 });
 test('only actual teachers can host, control or read private answers; public views stay redacted',async()=>{
  const h=await harness();assert.equal((await h.call('/api/jeopardy',{})).status,401);
@@ -73,7 +77,9 @@ test('final wagering hides the clue and other responses; wagers, answer locks an
  assert.equal((await h.call(h.path,{action:'wager',token:a.token,amount:400})).status,200);
  assert.equal((await h.call(h.path,{action:'wager',token:a.token,amount:100})).status,409);
  assert.equal((await h.call(h.path,{action:'wager',token:b.token,amount:-1})).status,400);
- await h.host('final-start');assert.equal((await h.call(h.path,{action:'answer',token:a.token,text:'Private response'})).status,200);
+ await h.host('final-start');assert.ok(h.state.deadline-Date.now()>59000&&h.state.deadline-Date.now()<=60000);
+ assert.equal((await h.call(h.path,{action:'answer',token:a.token,text:'x'.repeat(121)})).status,400);
+ assert.equal((await h.call(h.path,{action:'answer',token:a.token,text:'2, 3, 1'})).status,200);
  pub=await(await h.call(h.path)).json();assert.equal(pub.final.answers,undefined);assert.equal(pub.final.wagers,undefined);assert.deepEqual(pub.final.submitted,[0]);
  assert.equal((await h.call(h.path,{action:'answer',token:a.token,text:'Replacement'})).status,409);
  await h.host('final-reveal');await h.host('final-judge',{team:0,correct:true});assert.equal(h.state.teams[0].score,900);assert.equal((await h.host('final-judge',{team:0,correct:true})).r.status,400);

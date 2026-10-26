@@ -63,7 +63,7 @@ export async function handleJeopardy(request,storage,isTeacher,readJson){
      }
      if(action==='answer'){
       if(r.phase!=='final'||r.deadline<=Date.now()||r.final.answers[player.team]!==undefined)fail('Your team answer is already locked or time has ended.',409);
-      const text=clean(body.text,1000);if(!text)fail('Enter an answer of up to 1,000 characters.');r.final.answers[player.team]=text;
+      const text=clean(body.text,120);if(!text)fail('Enter an answer of up to 120 characters.');r.final.answers[player.team]=text;
      }
     }
     r.revision++;await txn.put('jeopardy:'+code,r);return json({...view(r),me:player.id});
@@ -93,7 +93,7 @@ export async function handleJeopardy(request,storage,isTeacher,readJson){
     case 'adjust':if(![0,1,2].includes(body.team)||!Number.isSafeInteger(body.amount)||Math.abs(body.amount)>5000)fail('Choose a team and a whole-number adjustment up to 5,000 points.');r.teams[body.team].score+=body.amount;break;
     case 'undo':if(!r.undo)fail('Nothing to undo.');Object.assign(r,{...r.undo,teams:r.teams.map((t,i)=>({...t,score:r.undo.scores[i]}))});delete r.scores;r.undo=null;keepUndo=false;break;
     case 'final':if(r.phase!=='board')fail('Return to the board first.');r.current='final';r.phase='wager';r.final={wagers:{},answers:{},graded:[]};r.buzz=null;r.deadline=null;break;
-    case 'final-start':if(r.phase!=='wager')fail('Open final wagering first.');for(let t=0;t<3;t++)r.final.wagers[t]??=0;r.phase='final';r.deadline=Date.now()+90000;break;
+    case 'final-start':if(r.phase!=='wager')fail('Open final wagering first.');for(let t=0;t<3;t++)r.final.wagers[t]??=0;r.phase='final';r.deadline=Date.now()+60000;break;
     case 'final-reveal':if(r.phase!=='final')fail('Start the final challenge first.');r.phase='reveal';r.deadline=null;break;
     case 'final-judge':if(r.current!=='final'||r.phase!=='reveal'||![0,1,2].includes(body.team)||typeof body.correct!=='boolean'||r.final.graded.includes(body.team))fail('This final response cannot be scored.');{const delta=(body.correct?1:-1)*r.final.wagers[body.team];r.teams[body.team].score+=delta;r.final.graded.push(body.team);r.feedback={id:crypto.randomUUID(),correct:body.correct,team:body.team,delta,at:Date.now()};}break;
     case 'end':r.phase='ended';r.deadline=null;r.expires=Math.min(r.expires,Date.now()+60*60*1000);break;

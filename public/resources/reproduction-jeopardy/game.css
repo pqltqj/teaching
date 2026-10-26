@@ -13,3 +13,16 @@ body.teacher-panel{--bg:#281c2d;--panel:#382a40;--line:#6e5579;--mint:#edd2ff;ba
 @media(prefers-reduced-motion:reduce){#effects{display:none}.confetti-piece,.incorrect-cross,.effect-incorrect{animation:none}}
 .projection .clue-card{padding:24px;margin:14px auto}.projection .clue-card .prompt{font-size:clamp(25px,2.5vw,40px);line-height:1.3;margin:18px 0}.projection .result-banner{padding:12px 20px;margin:0 0 18px;gap:16px}.projection .result-banner strong{font-size:clamp(32px,3vw,48px)}.projection .result-symbol{font-size:56px}.projection .result-banner div>span{font-size:22px;margin-top:5px}.projection .answer{padding-top:14px;margin-top:16px}.projection .answer strong{font-size:20px}.projection .answer p{font-size:16px;margin-bottom:0}
 .projection .board-column{grid-template-rows:64px repeat(5,minmax(38px,calc((100dvh - 456px)/5)))}
+
+/* Projector: make the answering team unmistakable. */
+body.projection[data-floor="0"]{background:#164d42}
+body.projection[data-floor="1"]{background:#66501d}
+body.projection[data-floor="2"]{background:#463367}
+.floor-banner{display:flex;align-items:center;justify-content:center;gap:24px;padding:16px 24px;margin:0 0 18px;border-radius:12px;color:#081624;text-align:center}
+.floor-banner[data-team="0"]{background:#90e3ce}
+.floor-banner[data-team="1"]{background:#ffdb83}
+.floor-banner[data-team="2"]{background:#bdadff}
+.floor-banner span{font-size:14px;letter-spacing:.12em;font-weight:800}
+.floor-banner strong{font-size:clamp(28px,3vw,42px)}
+.projection[data-floor="0"] .score[data-team="0"],.projection[data-floor="1"] .score[data-team="1"],.projection[data-floor="2"] .score[data-team="2"]{outline:4px solid currentColor;outline-offset:3px}
+@media(max-width:600px){.floor-banner{flex-direction:column;gap:4px}}
