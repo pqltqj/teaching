@@ -112,3 +112,10 @@ Teacher controls use a plum background and show the private answer by default on
 
 
 The projector background changes to the team colour while that team has the floor, with a prominent answering banner. Answer notes are brief and specific. Final Jeopardy asks teams to order three reproductive events and submit three numbers, with 60 seconds available. Main-board answers are seven words or fewer, including accepted alternatives. GIFT and cytoplasmic transfer replace the azoospermia and ICSI clues.
+
+
+## Biology 20 review — October 27, 2026
+
+Added one dated set of six question/answer pairs to the private Cloudflare review bank: a labelled Calvin cycle drawing, carbon accounting over three and six turns, algae biofuel benefits and production emissions, the aerobic respiration equation, glucose versus ATP and phosphorylation, and active transport with another ATP-powered task. The final three questions follow the teacher-supplied 7.1 Cellular Respiration slides (slides 3, 5, 8–9, 11–12 and 14).
+
+The new set starts locked. Existing courses, dated sets and lock states were preserved and checked against the pre-update live response. Questions and answers remain in private bank storage, outside this public repository. The original application code was restored and the new set was verified to persist.
