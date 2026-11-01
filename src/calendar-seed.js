@@ -1,9 +1,9 @@
 // Based on the mentor planner; C1 teaching days follow the Cell Division slides.
-// Quiz, test and review days are preserved. Science 10 uses the unmarked first line of each planner cell.
+// Quiz, test and review days are preserved. Science 10 uses the triangle-marked row beneath Biology 30.
 // November 30 is on the December spread. Entries before October 26 are excluded.
 export const calendarCourses = [
   {id: 'biology30', name: 'Biology 30'},
-  {id: 'science10', name: 'Science 10 (Block 2)'},
+  {id: 'science10', name: 'Science 10'},
   {id: 'chemistry20', name: 'Chemistry 20'},
   {id: 'biology20', name: 'Biology 20'}
 ];
@@ -49,37 +49,36 @@ calendarSeed['2026-10-30'] = {note: 'ATA Day'};
 calendarSeed['2026-11-11'] = {note: 'No school — Remembrance Day'};
 for (let day = 21; day <= 31; day++) calendarSeed[`2026-12-${day}`] = {note: 'Christmas break'};
 
-// Science 10 starts in November; triangle/circle/star rows belong to other courses.
+// Science 10 uses triangle-marked entries. November 12 is crossed out/unclear and left blank.
 const science10Lessons = {
-  "2026-11-02": "Clones",
-  "2026-11-03": "Mitosis and telomeres",
-  "2026-11-04": "Steps in meiosis",
-  "2026-11-05": "Mitosis quiz",
-  "2026-11-09": "Cell division and life cycles",
-  "2026-11-10": "Abnormal meiosis",
-  "2026-11-12": "Review",
-  "2026-11-13": "Mitosis and meiosis test",
-  "2026-11-16": "Genetics",
-  "2026-11-17": "Monohybrids",
-  "2026-11-18": "Incomplete dominance and codominance",
-  "2026-11-19": "Test cross; multiple alleles",
-  "2026-11-23": "Dihybrid cross",
-  "2026-11-24": "Quiz; X-linked traits",
-  "2026-11-25": "Pedigrees",
-  "2026-11-26": "Review",
-  "2026-11-27": "Genetic test",
-  "2026-11-30": "DNA",
-  "2026-12-01": "Structure of DNA",
-  "2026-12-02": "RNA",
-  "2026-12-03": "DNA sequencing",
-  "2026-12-07": "Recombinant DNA",
-  "2026-12-08": "Mutations",
-  "2026-12-09": "Types of genes",
-  "2026-12-10": "Review",
-  "2026-12-11": "DNA and RNA test",
-  "2026-12-14": "Population genetics",
-  "2026-12-15": "Evolution",
-  "2026-12-16": "Case study",
-  "2026-12-17": "Populations"
+  "2026-11-02": "Mechanical energy",
+  "2026-11-03": "Thermodynamics",
+  "2026-11-04": "Energy conversion",
+  "2026-11-05": "Development of energy",
+  "2026-11-09": "Energy applications",
+  "2026-11-10": "Review",
+  "2026-11-13": "Microscopes; image magnification",
+  "2026-11-16": "Microscope lab",
+  "2026-11-17": "Abiogenesis",
+  "2026-11-18": "Cell theory",
+  "2026-11-19": "Cell research",
+  "2026-11-23": "Cells",
+  "2026-11-24": "Organelles",
+  "2026-11-25": "Cell membrane",
+  "2026-11-26": "Quiz",
+  "2026-11-27": "Membrane technology",
+  "2026-11-30": "Surface area to volume ratio",
+  "2026-12-01": "Organisms",
+  "2026-12-02": "Photosynthesis",
+  "2026-12-03": "Transport in plants",
+  "2026-12-07": "Review",
+  "2026-12-08": "Biology test",
+  "2026-12-09": "Weather vs. climate",
+  "2026-12-10": "The water cycle",
+  "2026-12-11": "Thermal energy transfer",
+  "2026-12-14": "Water",
+  "2026-12-15": "Review of mole",
+  "2026-12-16": "Quiz",
+  "2026-12-17": "Biomes"
 };
 for (const [date, science10] of Object.entries(science10Lessons)) calendarSeed[date].science10 = science10;

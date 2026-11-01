@@ -17,16 +17,16 @@ function client(storage){return (path,body,cookie='',origin='https://calendar.te
 const day=(date='2026-10-26',revision=0)=>({date,revision,biology30:'Updated review',chemistry20:'Quiz',biology20:'Respiration',note:''});
 
 test('planner seed includes only requested courses and October 26 onward, including November 30',()=>{
-  assert.deepEqual(calendarCourses.map(c=>c.name),['Biology 30','Science 10 (Block 2)','Chemistry 20','Biology 20']);
+  assert.deepEqual(calendarCourses.map(c=>c.name),['Biology 30','Science 10','Chemistry 20','Biology 20']);
   for(const date of Object.keys(calendarSeed))assert.equal(calendarDate(date),true,date);
   assert.equal(calendarSeed['2026-10-27'].biology30,'Reproduction test');
   assert.equal(calendarSeed['2026-10-27'].chemistry20,'Net ionic equations (p. 6)');
   assert.equal(calendarSeed['2026-11-30'].biology30,'DNA');
   assert.equal(calendarSeed['2026-12-18'].note,'PLF');
   assert.equal(calendarSeed['2026-12-31'].note,'Christmas break');
-  assert.equal(calendarSeed['2026-11-03'].science10,'Mitosis and telomeres');
-  assert.equal(calendarSeed['2026-11-30'].science10,'DNA');
-  assert.equal(calendarSeed['2026-12-11'].science10,'DNA and RNA test');
+  assert.equal(calendarSeed['2026-11-03'].science10,'Thermodynamics');
+  assert.equal(calendarSeed['2026-11-30'].science10,'Surface area to volume ratio');
+  assert.equal(calendarSeed['2026-12-11'].science10,'Thermal energy transfer');
   for(const [date,day] of Object.entries(calendarSeed)) if(date<'2026-11-01'||day.note) assert.equal(day.science10,undefined);
 });
 
@@ -88,12 +88,12 @@ test('legacy saved days receive Science 10 without replacing saved fields; old c
  const storage=new Store();
  await storage.put('calendar:2026-11-03',{biology30:'Teacher plan',chemistry20:'Saved chemistry',biology20:'Saved biology',note:'Saved note',revision:4});
  let state=await calendarState(storage,false);
- assert.equal(state.days['2026-11-03'].science10,'Mitosis and telomeres');
+ assert.equal(state.days['2026-11-03'].science10,'Thermodynamics');
  assert.equal(state.days['2026-11-03'].biology30,'Teacher plan');
  assert.equal(state.days['2026-11-03'].revision,4);
  assert.equal((await updateCalendar(storage,day('2026-11-03',4))).status,200);
  state=await calendarState(storage,false);
- assert.equal(state.days['2026-11-03'].science10,'Mitosis and telomeres');
+ assert.equal(state.days['2026-11-03'].science10,'Thermodynamics');
  assert.equal((await updateCalendar(storage,{...day('2026-11-03',5),science10:''})).status,200);
  assert.equal((await calendarState(storage,false)).days['2026-11-03'].science10,'');
  assert.equal((await updateCalendar(storage,{...day(),science10:null})).status,400);

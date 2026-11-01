@@ -1,5 +1,5 @@
 const $ = selector => document.querySelector(selector);
-const courses = [{id:'biology30',name:'Biology 30'},{id:'science10',name:'Science 10 (Block 2)'},{id:'chemistry20',name:'Chemistry 20'},{id:'biology20',name:'Biology 20'}];
+const courses = [{id:'biology30',name:'Biology 30'},{id:'science10',name:'Science 10'},{id:'chemistry20',name:'Chemistry 20'},{id:'biology20',name:'Biology 20'}];
 const fields = [...courses.map(c => c.id), 'note'];
 let state = null, month = 10, editing = null, signature = '', loading = false;
 const dateText = (date, options) => new Intl.DateTimeFormat('en-CA', {...options,timeZone:'UTC'}).format(new Date(date+'T12:00:00Z'));
