@@ -1,7 +1,7 @@
 const $ = selector => document.querySelector(selector);
 const courses = [{id:'biology30',name:'Biology 30'},{id:'science10',name:'Science 10 (Block 2)'},{id:'chemistry20',name:'Chemistry 20'},{id:'biology20',name:'Biology 20'}];
 const fields = [...courses.map(c => c.id), 'note'];
-let state = null, month = 9, editing = null, signature = '', loading = false;
+let state = null, month = 10, editing = null, signature = '', loading = false;
 const dateText = (date, options) => new Intl.DateTimeFormat('en-CA', {...options,timeZone:'UTC'}).format(new Date(date+'T12:00:00Z'));
 function el(tag, cls, text){const n=document.createElement(tag);if(cls)n.className=cls;if(text!==undefined)n.textContent=text;return n}
 async function api(path,body){const response=await fetch(path,{method:body===undefined?'GET':'POST',credentials:'same-origin',cache:'no-store',headers:body===undefined?{}:{'Content-Type':'application/json'},body:body===undefined?undefined:JSON.stringify(body)});const result=await response.json();if(!response.ok){const error=new Error(result.error||'Unable to save. Please try again.');error.status=response.status;throw error}return result}
