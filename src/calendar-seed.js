@@ -1,8 +1,9 @@
 // Based on the mentor planner; C1 teaching days follow the Cell Division slides.
-// Quiz, test and review days are preserved. Block 2 (Science 10) is intentionally omitted.
+// Quiz, test and review days are preserved. Science 10 uses the unmarked first line of each planner cell.
 // November 30 is on the December spread. Entries before October 26 are excluded.
 export const calendarCourses = [
   {id: 'biology30', name: 'Biology 30'},
+  {id: 'science10', name: 'Science 10 (Block 2)'},
   {id: 'chemistry20', name: 'Chemistry 20'},
   {id: 'biology20', name: 'Biology 20'}
 ];
@@ -47,3 +48,38 @@ for (const date of ['2026-11-06', '2026-11-20', '2026-12-04', '2026-12-18']) cal
 calendarSeed['2026-10-30'] = {note: 'ATA Day'};
 calendarSeed['2026-11-11'] = {note: 'No school — Remembrance Day'};
 for (let day = 21; day <= 31; day++) calendarSeed[`2026-12-${day}`] = {note: 'Christmas break'};
+
+// Science 10 starts in November; triangle/circle/star rows belong to other courses.
+const science10Lessons = {
+  "2026-11-02": "Clones",
+  "2026-11-03": "Mitosis and telomeres",
+  "2026-11-04": "Steps in meiosis",
+  "2026-11-05": "Mitosis quiz",
+  "2026-11-09": "Cell division and life cycles",
+  "2026-11-10": "Abnormal meiosis",
+  "2026-11-12": "Review",
+  "2026-11-13": "Mitosis and meiosis test",
+  "2026-11-16": "Genetics",
+  "2026-11-17": "Monohybrids",
+  "2026-11-18": "Incomplete dominance and codominance",
+  "2026-11-19": "Test cross; multiple alleles",
+  "2026-11-23": "Dihybrid cross",
+  "2026-11-24": "Quiz; X-linked traits",
+  "2026-11-25": "Pedigrees",
+  "2026-11-26": "Review",
+  "2026-11-27": "Genetic test",
+  "2026-11-30": "DNA",
+  "2026-12-01": "Structure of DNA",
+  "2026-12-02": "RNA",
+  "2026-12-03": "DNA sequencing",
+  "2026-12-07": "Recombinant DNA",
+  "2026-12-08": "Mutations",
+  "2026-12-09": "Types of genes",
+  "2026-12-10": "Review",
+  "2026-12-11": "DNA and RNA test",
+  "2026-12-14": "Population genetics",
+  "2026-12-15": "Evolution",
+  "2026-12-16": "Case study",
+  "2026-12-17": "Populations"
+};
+for (const [date, science10] of Object.entries(science10Lessons)) calendarSeed[date].science10 = science10;
