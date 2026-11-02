@@ -88,7 +88,7 @@ export async function handleApi(request, env, storage) {
       }
       courses.push({id: course.id, name: course.name, sets});
     }
-    return json({teacher: isTeacher, courses, reviewRevision: 'mitosis-v2'});
+    return json({teacher: isTeacher, courses, reviewRevision: 'mitosis-v3'});
   }
   if (!isTeacher) return json({error: 'Sign in with your teacher password.'}, 401);
   if (path === '/api/calendar' && method === 'POST') {
