@@ -4,8 +4,8 @@ export const mitosisReview = {
   "title": "Mitosis",
   "questions": [
     {
-      "question": "Name the four stages of mitosis in order.",
-      "answer": "Prophase, metaphase, anaphase, telophase."
+      "question": "How does cytokinesis occur in plant cells?",
+      "answer": "A cell plate forms between the two nuclei and develops into a new cell wall."
     },
     {
       "question": "What happens during prophase?",
@@ -30,7 +30,7 @@ export const mitosisReview = {
   ]
 };
 export async function ensureMitosisReview(storage) {
-  const marker = 'migration:biology30-mitosis-2026-11-02-v2';
+  const marker = 'migration:biology30-mitosis-2026-11-02-v3';
   if (await storage.get(marker)) return;
   await storage.transaction(async txn => {
     if (await txn.get(marker)) return;
