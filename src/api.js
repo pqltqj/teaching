@@ -75,6 +75,7 @@ export async function handleApi(request, env, storage) {
   const previewBank = path === '/api/preview/bank';
   if ((path === '/api/bank' || previewBank) && method === 'GET') {
     if (previewBank && !await teacher(request, env, storage, 'preview')) return json({error: 'Enter your teacher passphrase to preview on this device.'}, 401);
+    // Apply the concise November 2 revision before serving review cards.
     await ensureMitosisReview(storage);
     const bank = await storage.get('bank');
     if (!bank) return json({teacher: isTeacher, courses: [], needsImport: true});
