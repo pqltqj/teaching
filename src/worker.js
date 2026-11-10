@@ -1,4 +1,5 @@
 import { ensureMitosisReview } from './mitosis-review.js';
+import { ensureNondisjunctionReview } from './nondisjunction-review.js';
 import { handleApi } from './api.js';
 import { routeDraft, handleDraft, draftRate } from './drafts.js';
 
@@ -6,6 +7,7 @@ export class ReviewBank {
   constructor(ctx, env) { this.ctx = ctx; this.env = env; }
   async fetch(request) {
     await ensureMitosisReview(this.ctx.storage);
+    await ensureNondisjunctionReview(this.ctx.storage);
     const path=new URL(request.url).pathname;
     if(path==='/internal/draft-rate')return draftRate(this.ctx.storage);
     return path.startsWith('/api/drafts/') ? handleDraft(request, this.ctx.storage) : handleApi(request, this.env, this.ctx.storage);
